@@ -1,6 +1,6 @@
 {
   "mode": "supplementary fixture regression; not a scientific benchmark and not included in the canonical 30-case metrics",
-  "generatedAt": "2026-07-25T23:43:49.142Z",
+  "generatedAt": "2026-07-25T23:44:57.119Z",
   "disclosure": {
     "fixtureMode": "Engineering regression set: fixtures replace only external inference; parsing, evidence validation, deterministic relation validation, simulations, and confidence policy remain live.",
     "liveModelAccuracy": "Not claimed. Live Featherless measurements were skipped without credentials.",
@@ -8,8 +8,8 @@
     "independentHumanReview": "pending"
   },
   "caseCount": 16,
-  "passed": 15,
-  "failed": 1,
+  "passed": 16,
+  "failed": 0,
   "rows": [
     {
       "id": "r01",
@@ -330,16 +330,16 @@
       "expectedMethodLabel": "ambiguous",
       "expectedMisconception": null,
       "expectedDecision": "ask_follow_up",
-      "actualDecision": "diagnose",
-      "actualMisconception": "vacuum-drop",
-      "retrievalScore": 0.86,
-      "modelOrFixtureConfidence": 0.9,
+      "actualDecision": "ask_follow_up",
+      "actualMisconception": null,
+      "retrievalScore": 0.22,
+      "modelOrFixtureConfidence": 0.42,
       "validatorAgreement": true,
       "evidenceValidity": true,
-      "contradictionCount": 0,
-      "confidenceGateResult": "diagnose",
-      "mismatchReason": "confidence policy",
-      "decision": "diagnose"
+      "contradictionCount": 1,
+      "confidenceGateResult": "ask_follow_up",
+      "mismatchReason": null,
+      "decision": "ask_follow_up"
     },
     {
       "id": "r16",

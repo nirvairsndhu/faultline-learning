@@ -1,6 +1,6 @@
 # Supplementary robustness regression
 
-This separate 16-case fixture regression is not a scientific benchmark and is not included in the headline canonical 30-case metrics. It detects obvious dependence on exact fixture wording. Raw result: **15 passed, 1 failed**.
+This separate 16-case fixture regression is not a scientific benchmark and is not included in the headline canonical 30-case metrics. It detects obvious dependence on exact fixture wording. Raw result: **16 passed, 0 failed**.
 
 | Case | Pack | Answer | Expected method | Expected decision | Actual decision | Actual misconception | Retrieval | Confidence | Validator | Evidence | Contradictions | Gate | Reason |
 |---|---|---|---|---|---|---|---:|---:|---|---|---:|---|---|
@@ -18,5 +18,5 @@ This separate 16-case fixture regression is not a scientific benchmark and is no
 | r12 | collision-forces | equal | ambiguous | ask_follow_up | ask_follow_up | — | 0.22 | 0.42 | true | true | 1 | ask_follow_up | — |
 | r13 | projectile-motion | none | valid_method | no_misconception | no_misconception | — | 0.22 | 0.9 | true | true | 0 | no_misconception | — |
 | r14 | vacuum-drop | same | ambiguous | ask_follow_up | ask_follow_up | — | 0.22 | 0.42 | true | true | 1 | ask_follow_up | — |
-| r15 | vacuum-drop | same | ambiguous | ask_follow_up | diagnose | vacuum-drop | 0.86 | 0.9 | true | true | 0 | diagnose | confidence policy |
+| r15 | vacuum-drop | same | ambiguous | ask_follow_up | ask_follow_up | — | 0.22 | 0.42 | true | true | 1 | ask_follow_up | — |
 | r16 | projectile-motion | none | valid_method | no_misconception | no_misconception | — | 0.22 | 0.9 | true | true | 0 | no_misconception | — |

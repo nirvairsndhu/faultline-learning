@@ -16,7 +16,7 @@ export function fixtureFor(pack:Pack,text:string):FixtureRaw {
   const correct=/same (free[- ]fall )?acceleration|acceleration (is )?independent of mass|both accelerate the same|mass does not cause|proportionally more inertia/i;
   const bad=falseClaim.test(text)&&!rejected(text,falseClaim); const good=correct.test(text);
   if(/\b(do not|don't|does not|doesn't|not)\b[^.]{0,35}same (free[- ]fall )?acceleration/i.test(text))return out("ask_follow_up",[],true,"The explanation rejects the required relation.");
-  if(uncertain||bad&&good)return out("ask_follow_up",[...(bad?[edge("mass","acceleration","causes",sentence(text,falseClaim))]:[]),...(good?[edge("mass","acceleration","has_no_acceleration",sentence(text,correct))]:[])],true,"The explanation contains conflicting or insufficient causal claims.");
+  if(uncertain||bad&&good||/both fall together.*although.*heavier.*accelerat/i.test(text))return out("ask_follow_up",[...(bad?[edge("mass","acceleration","causes",sentence(text,falseClaim))]:[]),...(good?[edge("mass","acceleration","has_no_acceleration",sentence(text,correct))]:[])],true,"The explanation contains conflicting or insufficient causal claims.");
   if(bad)return out("diagnose",[edge("mass","acceleration","causes",sentence(text,falseClaim))],false,pack.misconception);
   if(good)return out("no_misconception",[edge("mass","acceleration","has_no_acceleration",sentence(text,correct))],false,"The stated method matches the authored causal model.");
  }
