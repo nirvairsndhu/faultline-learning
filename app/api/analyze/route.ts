@@ -1,0 +1,3 @@
+import { NextResponse } from "next/server"; import { z } from "zod"; import { getPack } from "@/content/packs"; import { fixtureFor } from "@/lib/demo/fixtures";
+const Input=z.object({packId:z.string(),explanation:z.string().max(1600)});
+export async function POST(req:Request){const parsed=Input.safeParse(await req.json()); if(!parsed.success)return NextResponse.json({error:"Invalid analysis request"},{status:400}); const pack=getPack(parsed.data.packId); if(!pack)return NextResponse.json({error:"Unknown pack"},{status:404}); return NextResponse.json(fixtureFor(pack,parsed.data.explanation));}

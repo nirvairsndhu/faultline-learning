@@ -1,0 +1,29 @@
+{
+  "mode": "fixture",
+  "cases": [
+    {
+      "id": "vacuum-01",
+      "label": "valid_method",
+      "decision": "ask_follow_up",
+      "fallbackUsed": true
+    },
+    {
+      "id": "collision-01",
+      "label": "misconception",
+      "decision": "diagnose",
+      "fallbackUsed": true
+    },
+    {
+      "id": "projectile-01",
+      "label": "misconception",
+      "decision": "diagnose",
+      "fallbackUsed": true
+    }
+  ],
+  "metrics": {
+    "schemaSuccessRate": 1,
+    "modelMetrics": "skipped: no live API key",
+    "deterministicSimulationTestRate": 1
+  },
+  "generatedAt": "2026-07-25T21:23:02.664Z"
+}
