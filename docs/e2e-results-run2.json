@@ -1,0 +1,11 @@
+{
+  "total": 9,
+  "passed": 9,
+  "failed": 0,
+  "skipped": 0,
+  "flaky": 0,
+  "durationMs": 27610,
+  "duration": "27.61s",
+  "exitCode": 0,
+  "status": "passed"
+}

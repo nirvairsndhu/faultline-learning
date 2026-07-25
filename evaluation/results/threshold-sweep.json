@@ -1,0 +1,681 @@
+{
+  "selected": {
+    "confidenceThreshold": 0.72,
+    "retrievalThreshold": 0.58,
+    "reason": "The configured operational point independently reproduces the required canonical targets in this sweep; values are operational gates, not calibrated probabilities."
+  },
+  "sweep": [
+    {
+      "confidenceThreshold": 0.4,
+      "retrievalThreshold": 0.1,
+      "macroF1": 0.48636363636363633,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 1,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 0.625,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 9,
+        "tn": 0,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.4,
+      "retrievalThreshold": 0.2,
+      "macroF1": 0.48636363636363633,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 1,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 0.625,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 9,
+        "tn": 0,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.4,
+      "retrievalThreshold": 0.4,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.4,
+      "retrievalThreshold": 0.58,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.4,
+      "retrievalThreshold": 0.7,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.4,
+      "retrievalThreshold": 0.85,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.5,
+      "retrievalThreshold": 0.1,
+      "macroF1": 0.48636363636363633,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 1,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 0.625,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 9,
+        "tn": 0,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.5,
+      "retrievalThreshold": 0.2,
+      "macroF1": 0.48636363636363633,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 1,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 0.625,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 9,
+        "tn": 0,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.5,
+      "retrievalThreshold": 0.4,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.5,
+      "retrievalThreshold": 0.58,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.5,
+      "retrievalThreshold": 0.7,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.5,
+      "retrievalThreshold": 0.85,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.6,
+      "retrievalThreshold": 0.1,
+      "macroF1": 0.48636363636363633,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 1,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 0.625,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 9,
+        "tn": 0,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.6,
+      "retrievalThreshold": 0.2,
+      "macroF1": 0.48636363636363633,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 1,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 0.625,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 9,
+        "tn": 0,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.6,
+      "retrievalThreshold": 0.4,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.6,
+      "retrievalThreshold": 0.58,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.6,
+      "retrievalThreshold": 0.7,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.6,
+      "retrievalThreshold": 0.85,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.7,
+      "retrievalThreshold": 0.1,
+      "macroF1": 0.48636363636363633,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 1,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 0.625,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 9,
+        "tn": 0,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.7,
+      "retrievalThreshold": 0.2,
+      "macroF1": 0.48636363636363633,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 1,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 0.625,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 9,
+        "tn": 0,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.7,
+      "retrievalThreshold": 0.4,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.7,
+      "retrievalThreshold": 0.58,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.7,
+      "retrievalThreshold": 0.7,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.7,
+      "retrievalThreshold": 0.85,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.72,
+      "retrievalThreshold": 0.1,
+      "macroF1": 0.48636363636363633,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 1,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 0.625,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 9,
+        "tn": 0,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.72,
+      "retrievalThreshold": 0.2,
+      "macroF1": 0.48636363636363633,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 1,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 0.625,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 9,
+        "tn": 0,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.72,
+      "retrievalThreshold": 0.4,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.72,
+      "retrievalThreshold": 0.58,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.72,
+      "retrievalThreshold": 0.7,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.72,
+      "retrievalThreshold": 0.85,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.8,
+      "retrievalThreshold": 0.1,
+      "macroF1": 0.48636363636363633,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 1,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 0.625,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 9,
+        "tn": 0,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.8,
+      "retrievalThreshold": 0.2,
+      "macroF1": 0.48636363636363633,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 1,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 0.625,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 9,
+        "tn": 0,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.8,
+      "retrievalThreshold": 0.4,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.8,
+      "retrievalThreshold": 0.58,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.8,
+      "retrievalThreshold": 0.7,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.8,
+      "retrievalThreshold": 0.85,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.9,
+      "retrievalThreshold": 0.1,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.9,
+      "retrievalThreshold": 0.2,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.9,
+      "retrievalThreshold": 0.4,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.9,
+      "retrievalThreshold": 0.58,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.9,
+      "retrievalThreshold": 0.7,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    },
+    {
+      "confidenceThreshold": 0.9,
+      "retrievalThreshold": 0.85,
+      "macroF1": 0.8303571428571429,
+      "hiddenMisconceptionRecall": 1,
+      "validMethodFalsePositiveRate": 0,
+      "ambiguityRoutingAccuracy": 1,
+      "diagnosisPrecision": 1,
+      "diagnosisRecall": 1,
+      "confusion": {
+        "tp": 15,
+        "fp": 0,
+        "tn": 9,
+        "fn": 0
+      }
+    }
+  ]
+}

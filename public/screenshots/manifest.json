@@ -1,0 +1,27 @@
+{
+  "reviewedAt": "2026-07-25",
+  "reviewMethod": "Each PNG was opened at high detail after generation by the production Playwright suite.",
+  "screenshots": [
+    {"filename":"scenario-selection.png","viewport":"1280x720","productState":"scenario selection","inspected":true,"defectsFound":"none","fixesMade":"none"},
+    {"filename":"explanation-input.png","viewport":"1280x720","productState":"Vacuum Drop explanation input","inspected":true,"defectsFound":"none","fixesMade":"none"},
+    {"filename":"analysis-loading.png","viewport":"1280x720","productState":"analysis request in progress","inspected":true,"defectsFound":"previous capture showed the completed graph","fixesMade":"capture now delays only the API request and records the visible status message"},
+    {"filename":"hidden-misconception.png","viewport":"1280x720","productState":"correct answer with an unsupported causal relation","inspected":true,"defectsFound":"none","fixesMade":"none"},
+    {"filename":"uncertain-diagnosis.png","viewport":"1280x720","productState":"ambiguous explanation routed to clarification","inspected":true,"defectsFound":"none","fixesMade":"none"},
+    {"filename":"diagnostic-follow-up.png","viewport":"1280x720","productState":"clarification follow-up diagnosis","inspected":true,"defectsFound":"none","fixesMade":"none"},
+    {"filename":"vacuum-prediction.png","viewport":"1280x720","productState":"required Vacuum Drop prediction","inspected":true,"defectsFound":"none","fixesMade":"none"},
+    {"filename":"vacuum-observation.png","viewport":"1280x720","productState":"Vacuum Drop observed simulation result","inspected":true,"defectsFound":"none","fixesMade":"none"},
+    {"filename":"collision-simulation.png","viewport":"1280x720","productState":"Collision Forces simulation","inspected":true,"defectsFound":"none","fixesMade":"none"},
+    {"filename":"projectile-simulation.png","viewport":"1280x720","productState":"Projectile Motion simulation","inspected":true,"defectsFound":"none","fixesMade":"none"},
+    {"filename":"teach-back.png","viewport":"1280x720","productState":"teach-back input","inspected":true,"defectsFound":"none","fixesMade":"none"},
+    {"filename":"failed-repair.png","viewport":"1280x720","productState":"failed graph repair","inspected":true,"defectsFound":"none","fixesMade":"none"},
+    {"filename":"successful-graph-repair.png","viewport":"1280x720","productState":"verified graph repair","inspected":true,"defectsFound":"none","fixesMade":"none"},
+    {"filename":"transfer-failure.png","viewport":"1280x720","productState":"failed transfer requiring causal method","inspected":true,"defectsFound":"none","fixesMade":"none"},
+    {"filename":"transfer-success.png","viewport":"1280x720","productState":"successful transfer and session report","inspected":true,"defectsFound":"none","fixesMade":"none"},
+    {"filename":"session-report.png","viewport":"1280x720","productState":"anonymous session report","inspected":true,"defectsFound":"none","fixesMade":"none"},
+    {"filename":"reliability-mode.png","viewport":"1280x720","productState":"cached analysis / live validation disclosure","inspected":true,"defectsFound":"previous capture duplicated scenario selection without disclosure","fixesMade":"capture now records the learning state with the visible fallback disclosure"},
+    {"filename":"reduced-motion.png","viewport":"1280x720","productState":"reduced-motion Vacuum Drop start state","inspected":true,"defectsFound":"previous image was blank","fixesMade":"capture now emulates reduced motion and navigates before recording"},
+    {"filename":"mobile-scenario.png","viewport":"390x844 CSS pixels","productState":"mobile scenario selection","inspected":true,"defectsFound":"none","fixesMade":"none"},
+    {"filename":"mobile-graph.png","viewport":"390x844 CSS pixels","productState":"mobile evidence-linked graph","inspected":true,"defectsFound":"none","fixesMade":"none"},
+    {"filename":"mobile-simulation.png","viewport":"390x844 CSS pixels","productState":"mobile simulation action and readout","inspected":true,"defectsFound":"none","fixesMade":"none"}
+  ]
+}

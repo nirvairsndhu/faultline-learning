@@ -1,0 +1,15 @@
+[
+  {"id":"r01","packId":"vacuum-drop","answer":"same","explanation":"Mass does not cause a greater free-fall acceleration in a vacuum; both accelerate the same.","label":"valid_method","focus":"negation"},
+  {"id":"r02","packId":"vacuum-drop","answer":"same","explanation":"Although people say ‘the heavier one accelerates faster,’ that claim is wrong: acceleration is independent of mass in a vacuum.","label":"valid_method","focus":"quoted rejected misconception"},
+  {"id":"r03","packId":"vacuum-drop","answer":"heavy","explanation":"The answer is that they land together, but I think the heavier object accelerates faster.","label":"hidden_misconception","focus":"correct answer with invalid method"},
+  {"id":"r04","packId":"vacuum-drop","answer":"heavy","explanation":"They have the same acceleration in a vacuum, so I selected the heavier object by mistake.","label":"valid_method","focus":"incorrect answer with valid method"},
+  {"id":"r05","packId":"collision-forces","answer":"equal","explanation":"Different masses can mean different accelerations, not unequal collision forces; each vehicle exerts an equal and opposite force.","label":"valid_method","focus":"contrastive language"},
+  {"id":"r06","packId":"collision-forces","answer":"truck","explanation":"Because it is heavier, the truck pushes with a larger force on the car.","label":"misconception","focus":"collision force versus acceleration"},
+  {"id":"r07","packId":"collision-forces","answer":"equal","explanation":"The car’s acceleration is larger, therefore the car pushes harder.","label":"misconception","focus":"acceleration-force conflation"},
+  {"id":"r08","packId":"projectile-motion","answer":"none","explanation":"After release, its velocity continues forward; it is not a continuing forward force.","label":"valid_method","focus":"projectile velocity versus force"},
+  {"id":"r09","packId":"projectile-motion","answer":"forward","explanation":"Gravity acts vertically and horizontal acceleration is zero, but I picked a forward force.","label":"valid_method","focus":"incorrect answer with mostly valid reasoning"},
+  {"id":"r10","packId":"projectile-motion","answer":"forward","explanation":"The ball keeps moving forward because a forward force keeps acting after release.","label":"misconception","focus":"reordered clauses"},
+  {"id":"r11","packId":"vacuum-drop","answer":"same","explanation":"Gravity pulls both objects, so I am not sure whether their acceleration depends on mass.","label":"ambiguous","focus":"ambiguous incomplete explanation"},
+  {"id":"r12","packId":"collision-forces","answer":"equal","explanation":"They are equal and opposite—unless the truck’s mass means its force is greater; I cannot reconcile that.","label":"ambiguous","focus":"conflicting clauses"},
+  {"id":"r13","packId":"projectile-motion","answer":"none","explanation":"No horizontal force after release; gravity creates downward acceleration, not forward acceleration.","label":"valid_method","focus":"gravitational force versus acceleration"}
+]

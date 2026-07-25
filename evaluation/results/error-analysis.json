@@ -1,39 +1,5 @@
 {
-  "mode": "fixture through shared pipeline",
   "generatedAt": "2026-07-25T22:26:07.525Z",
-  "disclosure": {
-    "fixtureMode": "Engineering regression set: fixtures replace only external inference; parsing, evidence validation, deterministic relation validation, simulations, and confidence policy remain live.",
-    "liveModelAccuracy": "Not claimed. Live Featherless measurements were skipped without credentials.",
-    "operationalConfidence": "Operational confidence values are not calibrated probabilities.",
-    "independentHumanReview": "pending"
-  },
-  "metrics": {
-    "caseCount": 30,
-    "clearMisconceptionPositives": 15,
-    "explicitMisconceptionCases": 9,
-    "validMethodNegatives": 9,
-    "ambiguousCases": 6,
-    "nonAmbiguousCases": 24,
-    "hiddenMisconceptionRecall": 1,
-    "validMethodFalsePositiveRate": 0,
-    "ambiguityRoutingAccuracy": 1,
-    "evidenceSpanValidity": 1,
-    "schemaSuccessRate": 1,
-    "deterministicSimulationPassRate": 1,
-    "macroF1": 0.8303571428571429,
-    "diagnosisPrecision": 1,
-    "diagnosisRecall": 1,
-    "confusion": {
-      "tp": 15,
-      "fp": 0,
-      "tn": 9,
-      "fn": 0
-    }
-  },
-  "thresholds": {
-    "modelConfidence": 0.72,
-    "retrievalSimilarity": 0.58
-  },
   "rows": [
     {
       "id": "v01",
@@ -665,5 +631,6 @@
       "mismatchReason": null,
       "decision": "ask_follow_up"
     }
-  ]
+  ],
+  "errors": []
 }

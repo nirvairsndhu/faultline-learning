@@ -1,17 +1,23 @@
 # Faultline evaluation
 
-Mode: **fixture**. This uses authored reference labels only; independent human review is pending. Live Featherless metrics are skipped.
+Canonical set: **30 authored cases** — **15 clear misconception positives** (9 explicit and 6 hidden), **9 valid-method negatives**, and **6 ambiguous cases evaluated separately**. The diagnosis confusion matrix covers the **24 non-ambiguous cases**.
 
-| Metric | Actual result |
-|---|---:|
-| Cases | 30 |
-| Answer-only accuracy | 0.6 |
-| Fixture pipeline accuracy | 0.6333333333333333 |
-| Hidden misconception recall | 0.3333333333333333 |
-| Valid-method false-positive rate | 0.5555555555555556 |
-| Ambiguity routing accuracy | 0.8333333333333334 |
-| Evidence-span validity | 1 |
-| Schema success | 1 |
-| Deterministic simulation pass rate | 1 |
+| Metric | Result | Raw counts |
+|---|---:|---|
+| Diagnosis confusion | TP 15, FP 0, TN 9, FN 0 | 15/0/9/0 |
+| Hidden misconception recall | 1 | 6/6 detected |
+| Valid-method false-positive rate | 0 | 0/9 |
+| Ambiguity-routing accuracy | 1 | 6/6 routed correctly |
+| Evidence-span validity | 1 | 30/30 |
+| Schema success | 1 | 30/30 |
+| Deterministic simulation pass | 1 | 3/3 |
 
-Graph-edge F1 and live latency are not estimated in fixture mode.
+Model confidence threshold: **0.72**. Retrieval similarity threshold: **0.58**.
+
+Engineering regression set: fixtures replace only external inference; parsing, evidence validation, deterministic relation validation, simulations, and confidence policy remain live.
+
+Not claimed. Live Featherless measurements were skipped without credentials.
+
+Operational confidence values are not calibrated probabilities.
+
+Independent human review remains pending.

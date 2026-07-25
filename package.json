@@ -11,7 +11,7 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "evaluate": "tsx evaluation/run-evaluation.ts",
-    "capture": "playwright test tests/e2e/visual.spec.ts"
+    "capture": "playwright test --config=playwright.capture.config.ts"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.7",

@@ -7,5 +7,5 @@ describe("remediation deterministic coverage",()=>{
  it("rejects unknown concepts and relations",()=>{const p=PACKS[0];const r=validateEdges(p,[{source:"unknown",target:"mass",type:"invented",evidence:"mass"}],"mass");expect(r.invalidCount).toBe(1)});
  it("normalizes learner input",()=>expect(normalizeLearnerInput("  mass\n causes   motion ")).toBe("mass causes motion"));
  it("uses confidence gate and contradiction abstention",()=>{expect(confidenceDecision({confidence:.9,similarity:.9,contradiction:false,validatorAgrees:true,hasEvidence:true})).toBe("diagnose");expect(confidenceDecision({confidence:.9,similarity:.9,contradiction:true,validatorAgrees:true,hasEvidence:true})).toBe("ask_follow_up")});
- it("selects disclosed fixture for each pack",()=>PACKS.forEach(p=>expect(fixtureFor(p,"maybe both").fallbackUsed).toBe(true)));
+ it("fixture supplies a raw external-model replacement for each pack",()=>PACKS.forEach(p=>expect(fixtureFor(p,"maybe both").decision).toBe("ask_follow_up")));
 });
