@@ -1,0 +1,27 @@
+1
+00:00:00,000 --> 00:00:15,000
+Most learning tools grade the answer. But correct answers can hide incorrect reasoning.
+
+2
+00:00:15,000 --> 00:00:35,000
+Faultline separates answer correctness from method validity and shows the learner's actual relation and evidence.
+
+3
+00:00:35,000 --> 00:00:55,000
+The model extracts claims. Deterministic validation decides the physics.
+
+4
+00:00:55,000 --> 00:01:15,000
+Prediction comes first. The local vacuum simulation shows equal acceleration and landing time.
+
+5
+00:01:15,000 --> 00:01:40,000
+The faulty learner edge disappears. A verified repaired relation appears.
+
+6
+00:01:40,000 --> 00:01:55,000
+Transfer checks the same causal relation in a changed context.
+
+7
+00:01:55,000 --> 00:01:59,000
+Faultline is a reasoning instrument, not a chatbot.
