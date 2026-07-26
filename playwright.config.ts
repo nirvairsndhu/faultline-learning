@@ -1,7 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 export default defineConfig({
   testDir: "tests/e2e",
-  testIgnore: "capture.spec.ts",
+  testIgnore: /(?:capture|final-capture)\.spec\.ts/,
   timeout: 120000,
   workers: 1,
   reporter: [["list"], ["./tests/e2e/release-reporter.ts"]],

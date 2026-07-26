@@ -11,5 +11,8 @@
   {"id":"r10","packId":"projectile-motion","answer":"forward","explanation":"The ball keeps moving forward because a forward force keeps acting after release.","label":"misconception","focus":"reordered clauses"},
   {"id":"r11","packId":"vacuum-drop","answer":"same","explanation":"Gravity pulls both objects, so I am not sure whether their acceleration depends on mass.","label":"ambiguous","focus":"ambiguous incomplete explanation"},
   {"id":"r12","packId":"collision-forces","answer":"equal","explanation":"They are equal and opposite—unless the truck’s mass means its force is greater; I cannot reconcile that.","label":"ambiguous","focus":"conflicting clauses"},
-  {"id":"r13","packId":"projectile-motion","answer":"none","explanation":"No horizontal force after release; gravity creates downward acceleration, not forward acceleration.","label":"valid_method","focus":"gravitational force versus acceleration"}
+  {"id":"r13","packId":"projectile-motion","answer":"none","explanation":"No horizontal force after release; gravity creates downward acceleration, not forward acceleration.","label":"valid_method","focus":"gravitational force versus acceleration"},
+  {"id":"r14","packId":"vacuum-drop","answer":"same","explanation":"The forces are equal and opposite.","label":"ambiguous","focus":"cross-pack irrelevance"},
+  {"id":"r15","packId":"vacuum-drop","answer":"same","explanation":"Both fall together, although the heavier one accelerates more.","label":"ambiguous","focus":"contradiction"},
+  {"id":"r16","packId":"projectile-motion","answer":"none","explanation":"The statement \"a forward force keeps pushing it\" is wrong after release; horizontal acceleration is zero.","label":"valid_method","focus":"quoted false claim"}
 ]
