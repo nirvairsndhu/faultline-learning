@@ -1,6 +1,6 @@
 {
   "mode": "fixture through shared pipeline",
-  "generatedAt": "2026-07-25T23:44:57.119Z",
+  "generatedAt": "2026-07-25T23:56:09.092Z",
   "disclosure": {
     "fixtureMode": "Engineering regression set: fixtures replace only external inference; parsing, evidence validation, deterministic relation validation, simulations, and confidence policy remain live.",
     "liveModelAccuracy": "Not claimed. Live Featherless measurements were skipped without credentials.",
