@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default async function Report({ params }) { const id = (await params).sessionId; return <main className="shell report"><header className="mast"><span className="mark">FAULTLINE / ANONYMOUS REPORT</span><span className="mono">{id}</span></header><h1>Session evidence report</h1><p>This report is stored locally in the learner’s browser. Return to the learning flow to view its live evidence record.</p><Link className="button" href="/">Choose a scenario</Link></main>; }

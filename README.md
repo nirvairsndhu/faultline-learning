@@ -23,7 +23,7 @@ npm ci
 npm run dev
 ```
 
-Run `npm run lint`, `npm run typecheck`, `npm run test`, `npm run build`, `npm run test:e2e`, and `npm run evaluate`.
+Run `npm run lint`, `npm run test`, `npm run build`, `npm run test:e2e`, and `npm run evaluate`. Use `npm run check` for the complete JavaScript verification suite.
 
 Copy `.env.example` to configure Featherless. Without a key, Faultline visibly uses **Cached analysis, live validation**; simulations and validators remain local. The current evaluation is fixture mode with 30 authored cases (10 per pack) and honestly marks live-model metrics as skipped. Generated production screenshots are in `public/screenshots/`.
 

@@ -4,15 +4,15 @@ Faultline is a bounded physics-reasoning product: it maps learner explanations, 
 
 ## Architecture
 
-- `content/packs.ts`: authored, shared-schema packs; no UI contains physics truth.
+- `content/packs.js`: authored, shared-schema packs; no UI contains physics truth.
 - `lib/domain`: deterministic physics, relation, repair and transfer authority.
 - `lib/ai`: bounded extraction only; a missing key uses disclosed fixtures.
 - `app/api`: validated server boundaries; pack endpoint removes hidden diagnosis keys.
-- `components/FaultlineApp.tsx`: accessible stage flow and visual instrument.
+- `components/FaultlineApp.jsx`: accessible stage flow and visual instrument.
 
 ## Commands
 
-`npm run dev`, `npm run lint`, `npm run typecheck`, `npm run test`, `npm run test:e2e`, `npm run evaluate`, `npm run build`, `npm start`.
+`npm run dev`, `npm run lint`, `npm run test`, `npm run test:e2e`, `npm run evaluate`, `npm run build`, `npm run check`, `npm start`.
 
 ## Invariants
 

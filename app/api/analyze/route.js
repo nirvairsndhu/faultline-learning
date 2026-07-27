@@ -1,0 +1,9 @@
+import { NextResponse } from "next/server";
+import { z } from "zod";
+import { getPack, PACKS } from "@/content/packs";
+import { analyzeExplanation } from "@/lib/ai/featherless";
+import { verifyReasoning } from "@/lib/domain/verification";
+const Input = z.object({ packId: z.string(), explanation: z.string().max(1600), phase: z.enum(["initial", "teach_back", "transfer"]).optional(), selectedAnswer: z.string().optional() });
+export async function POST(req) { const parsed = Input.safeParse(await req.json()); if (!parsed.success)
+    return NextResponse.json({ error: "Invalid analysis request" }, { status: 400 }); const pack = getPack(parsed.data.packId); if (!pack)
+    return NextResponse.json({ error: "Unknown pack" }, { status: 404 }); const analysis = await analyzeExplanation(pack, parsed.data.explanation, PACKS); const phase = parsed.data.phase ?? "initial"; return NextResponse.json(phase === "initial" ? analysis : { analysis, verification: verifyReasoning(pack, parsed.data.explanation, analysis, phase, parsed.data.selectedAnswer) }); }
