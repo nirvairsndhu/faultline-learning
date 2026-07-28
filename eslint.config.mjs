@@ -1,2 +1,7 @@
 import { globalIgnores } from "eslint/config";
-export default [globalIgnores([".next/**", "node_modules/**", "playwright-report/**", "test-results/**"])];
+import nextPlugin from "@next/eslint-plugin-next";
+
+export default [
+  globalIgnores([".next/**", "node_modules/**", "playwright-report/**", "test-results/**"]),
+  nextPlugin.flatConfig.recommended,
+];
