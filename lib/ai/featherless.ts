@@ -5,7 +5,9 @@ import { extractionMessages, PROMPT_VERSION } from "./prompts";
 import { retrieveCandidates } from "./retrieval";
 import { fixtureFor } from "@/lib/demo/fixtures";
 import { finalizeAnalysis } from "./pipeline";
-const timeout=Number(process.env.AI_REQUEST_TIMEOUT_MS||8000); const maxRetries=1;
+const timeout=Number.isFinite(Number(process.env.AI_REQUEST_TIMEOUT_MS))?Math.max(1000,Number(process.env.AI_REQUEST_TIMEOUT_MS)):8000;
+export function configuredMaxRetries(value=process.env.AI_MAX_RETRIES){const parsed=Number(value);return Number.isFinite(parsed)?Math.min(5,Math.max(0,Math.floor(parsed))):1;}
+const maxRetries=configuredMaxRetries();
 export type AnalyzerDeps={create?:()=>OpenAI; now?:()=>number; forceFixture?:boolean};
 export async function analyzeExplanation(pack:Pack,text:string,packs:Pack[],deps:AnalyzerDeps={}):Promise<Analysis>{
  if(deps.forceFixture || !process.env.FEATHERLESS_API_KEY || process.env.DEMO_RELIABILITY_MODE==="true") return finalizeAnalysis(pack,text,fixtureFor(pack,text),{fallbackUsed:true,model:"fixture-v1",promptVersion:PROMPT_VERSION,latencyMs:0});
