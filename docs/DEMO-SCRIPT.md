@@ -1,15 +1,15 @@
-# Faultline demo narration (1:57)
+# Faultline demo narration (1:48)
 
-**0:00–0:15** Most learning tools grade the answer. But a correct answer can hide incorrect reasoning. Faultline makes the relationship behind an answer inspectable.
+**0:00–0:12** Most learning tools grade the answer. A correct answer can still hide incorrect reasoning. Faultline makes the relationship inspectable.
 
-**0:15–0:35** Here the learner correctly selects that both spheres land together, but explains that mass causes greater acceleration. Faultline maps that actual learner relation and keeps the exact evidence beside it. Answer correctness and method validity are separate.
+**0:12–0:31** The learner selects that both spheres land together, but says mass causes greater acceleration. Faultline maps that actual relation and keeps the exact evidence beside it. Answer correctness and method validity are separate.
 
-**0:35–0:55** A language model extracts bounded claims and relations from the learner’s words. It does not decide physics truth. Deterministic code validates the extracted relation against this authored causal model.
+**0:31–0:48** Bounded extraction reads the learner’s words. It does not decide physics truth. Deterministic code validates the relation against the authored causal model. The visible status says Cached analysis, live validation when no key is configured.
 
-**0:55–1:15** Faultline requires a prediction, then runs a local Vacuum Drop simulation. Both objects have the same free-fall acceleration and the same landing time in a vacuum.
+**0:48–1:03** Faultline requires a prediction, then runs a local Vacuum Drop simulation. Both objects have the same free-fall acceleration and landing time in a vacuum.
 
-**1:15–1:40** The revised explanation says acceleration is independent of mass. The original faulty learner edge fades out; the newly extracted, verified relation appears. This is a real comparison of two learner explanations.
+**1:03–1:27** The revised explanation says acceleration is independent of mass. The faulty edge fades out; the verified relation appears. This compares two learner explanations.
 
-**1:40–1:55** On the Moon, changing both masses does not change the ideal free-fall acceleration. The transfer answer and its explanation must both pass the same verification policy.
+**1:27–1:43** In the changed context, the ideal acceleration remains independent of mass. The transfer answer and explanation must both pass the same verification policy.
 
-**1:55–1:59** Faultline makes conceptual change inspectable. It is not a chatbot. It is a reasoning instrument.
+**1:43–1:48** Faultline makes reasoning inspectable. It is not a chatbot; it is a reasoning instrument.

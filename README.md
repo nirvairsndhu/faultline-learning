@@ -2,6 +2,12 @@
 
 **A scientific reasoning instrument for making physics causal thinking inspectable.**
 
+## Release status
+
+Repository verification is complete on `main`: 61 tests pass, all 9 Chromium/WebKit E2E tests pass, and the production dependency audit reports 0 vulnerabilities. A public deployment URL and final video are not yet available; deployment and video recording are the remaining external submission tasks.
+
+Without a Featherless key, the public build must disclose **Cached analysis, live validation**. It must not be described as live-model performance.
+
 Faultline separates selecting a correct answer from using a valid method. It maps learner language to authored concepts, identifies a supported faulty relation with literal evidence, requires a prediction, runs a local deterministic simulation, verifies teach-back, and checks transfer.
 
 ## Scope
