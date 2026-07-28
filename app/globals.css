@@ -9,6 +9,7 @@ html {
 
 body {
   margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 main,
@@ -30,6 +31,18 @@ header {
 
 header h1 {
   margin: 0 0 8px;
+}
+
+.home-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.home-header h1,
+.home-header nav {
+  margin: 0;
 }
 
 header p,
@@ -62,14 +75,31 @@ a {
   padding: 4px 0;
 }
 
+.home-layout {
+  display: grid;
+  grid-template-columns: minmax(180px, .7fr) minmax(0, 1.3fr);
+  gap: 48px;
+  align-items: start;
+}
+
+.home-intro {
+  position: sticky;
+  top: 12px;
+}
+
+.home-scenarios {
+  margin-top: 20px;
+}
+
 .scenario-list {
-  padding-left: 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .scenario-list li {
-  margin: 0 0 12px;
-  padding: 8px;
-  border: 1px solid black;
+  margin: 0 0 24px;
+  padding: 0 0 16px;
 }
 
 .scenario-list h3,
@@ -230,7 +260,7 @@ footer p {
   }
 
   .scenario-list {
-    padding-left: 22px;
+    padding-left: 0;
   }
 
   .stage {
@@ -243,6 +273,24 @@ footer p {
 
   dd {
     margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 700px) {
+  .home-header {
+    display: block;
+  }
+
+  .home-header nav {
+    margin-top: 8px;
+  }
+
+  .home-layout {
+    display: block;
+  }
+
+  .home-intro {
+    position: static;
   }
 }
 

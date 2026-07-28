@@ -5,34 +5,37 @@ import SiteFooter from "@/components/SiteFooter";
 export default function Home() {
   return (
     <>
-      <main>
-        <header>
+      <main className="home-page">
+        <header className="home-header">
           <h1>FAULTLINE</h1>
           <nav aria-label="Main navigation">
-            <Link href="/evaluation">evaluation results</Link>
+            <Link href="#scenarios">scenarios</Link>
+            {" | "}
+            <Link href="/evaluation">evaluation</Link>
           </nav>
         </header>
 
-        <section>
-          <h2>Physics reasoning checker</h2>
-          <p>Pick a problem, answer it, and explain why. The program checks the explanation and runs a small local physics test.</p>
-          <p><a className="main-link" href="#scenarios">View scenarios</a></p>
-        </section>
+        <div className="home-layout">
+          <section className="home-intro">
+            <h2>Physics reasoning checker</h2>
+            <p>Pick a problem and explain your answer. The program checks the explanation and runs a small physics test.</p>
+            <p><a className="main-link" href="#scenarios">View scenarios</a></p>
+            <p><small>No account. Three authored problems.</small></p>
+          </section>
 
-        <section id="scenarios">
-          <h2>Available scenarios</h2>
-          <p>There are only three right now.</p>
-          <ol className="scenario-list" aria-label="Physics scenarios">
-            {PACKS.map((pack, index) => (
-              <li key={pack.id}>
-                <h3><Link href={`/learn/${pack.id}`}>{pack.title}</Link></h3>
-                <p>{pack.problem}</p>
-                <p><small>common wrong idea: {pack.misconception}</small></p>
-                <Link href={`/learn/${pack.id}`}>start scenario {index + 1}</Link>
-              </li>
-            ))}
-          </ol>
-        </section>
+          <section className="home-scenarios" id="scenarios">
+            <h2>Scenarios</h2>
+            <ol className="scenario-list" aria-label="Physics scenarios">
+              {PACKS.map((pack, index) => (
+                <li key={pack.id}>
+                  <h3>{index + 1}. <Link href={`/learn/${pack.id}`}>{pack.title}</Link></h3>
+                  <p>{pack.problem}</p>
+                  <Link href={`/learn/${pack.id}`}>start</Link>
+                </li>
+              ))}
+            </ol>
+          </section>
+        </div>
       </main>
       <SiteFooter />
     </>
