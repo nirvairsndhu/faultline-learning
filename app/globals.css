@@ -34,15 +34,15 @@ a {
 
 .shell,
 .instrument {
-  width: min(1000px, 100%);
+  width: min(900px, 100%);
   min-height: calc(100dvh - 62px);
   margin: 0 auto;
-  padding: 0 24px 56px;
+  padding: 0 24px 36px;
 }
 
 .mast,
 .topbar {
-  min-height: 62px;
+  min-height: 54px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -89,29 +89,20 @@ dt {
 }
 
 .hero {
-  max-width: 760px;
-  padding: 64px 0 70px;
-}
-
-.project-label {
-  margin: 0 0 12px;
-  color: var(--text);
-  opacity: .65;
-  font-size: 14px;
+  max-width: 650px;
+  padding: 34px 0 38px;
 }
 
 .hero h1 {
-  margin: 0 0 18px;
-  font-size: clamp(38px, 6vw, 58px);
-  line-height: 1.06;
-  letter-spacing: -.035em;
+  margin: 0 0 10px;
+  font-size: 36px;
+  line-height: 1.1;
 }
 
 .hero-description {
-  max-width: 650px;
-  margin: 0 0 28px;
-  font-size: 18px;
-  line-height: 1.5;
+  margin: 0 0 18px;
+  font-size: 16px;
+  line-height: 1.4;
 }
 
 .button {
@@ -119,7 +110,7 @@ dt {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 9px 15px;
+  padding: 7px 12px;
   border: 1px solid var(--accent);
   border-radius: 0;
   background: var(--accent);
@@ -153,7 +144,7 @@ textarea:focus-visible,
 
 .scenarios-section,
 .how-it-works {
-  padding: 42px 0 54px;
+  padding: 24px 0 30px;
   border-top: 1px solid var(--text);
 }
 
@@ -162,13 +153,13 @@ textarea:focus-visible,
   align-items: baseline;
   justify-content: space-between;
   gap: 24px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .section-heading h2,
 .how-it-works h2 {
   margin: 0;
-  font-size: 28px;
+  font-size: 22px;
 }
 
 .section-heading p {
@@ -180,23 +171,23 @@ textarea:focus-visible,
 
 .scenario-list {
   display: grid;
-  gap: 12px;
+  gap: 8px;
 }
 
 .scenario-row {
   display: grid;
   grid-template-columns: 30px minmax(0, 1fr) auto;
-  gap: 16px;
+  gap: 12px;
   align-items: start;
-  padding: 22px 10px;
+  padding: 14px 10px;
   border: 1px solid var(--text);
   background: var(--background);
   text-decoration: none;
 }
 
 .scenario-row:hover {
-  border-left: 6px solid var(--accent);
-  padding-left: 5px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .scenario-number {
@@ -206,15 +197,15 @@ textarea:focus-visible,
 
 .scenario-row h3 {
   margin: 0 0 7px;
-  font-size: 21px;
+  font-size: 18px;
 }
 
 .scenario-row p {
   margin: 0 0 9px;
   color: var(--text);
   opacity: .72;
-  font-size: 14px;
-  line-height: 1.45;
+  font-size: 13px;
+  line-height: 1.35;
 }
 
 .scenario-row small {

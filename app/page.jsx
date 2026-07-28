@@ -14,16 +14,15 @@ export default function Home() {
         </header>
 
         <section className="hero">
-          <p className="project-label">Hackathon physics project</p>
-          <h1>Check the reasoning behind a physics answer.</h1>
-          <p className="hero-description">Faultline finds the relationship that went wrong in an explanation, then lets you test it with a small simulation.</p>
-          <a className="button" href="#scenarios">Choose a scenario</a>
+          <h1>Faultline</h1>
+          <p className="hero-description">A small tool for checking the reasoning behind a physics answer.</p>
+          <a className="button" href="#scenarios">View scenarios</a>
         </section>
 
         <section className="scenarios-section" id="scenarios">
           <div className="section-heading">
-            <h2>Scenarios</h2>
-            <p>About 4 minutes each. No account needed.</p>
+            <h2>Choose a scenario</h2>
+            <p>No account needed.</p>
           </div>
           <div className="scenario-list" aria-label="Physics scenarios">
             {PACKS.map((pack, index) => (
@@ -40,15 +39,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="how-it-works">
-          <h2>How it works</h2>
-          <ol>
-            <li>Pick an answer and explain your method.</li>
-            <li>Faultline maps the causal relationships in your explanation.</li>
-            <li>Run a simulation and rewrite the part that was wrong.</li>
-          </ol>
-          <p className="scope-note">Current version has 3 physics scenarios. We ran out of hackathon time before adding more.</p>
-        </section>
       </main>
       <SiteFooter />
     </>
