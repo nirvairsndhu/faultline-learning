@@ -3,12 +3,13 @@
 }
 
 html {
-  background: white;
-  color: black;
+  background: #dfe8f1;
+  color: #111111;
 }
 
 body {
   margin: 0;
+  color: #111111;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -21,12 +22,23 @@ footer {
 main {
   min-height: calc(100vh - 120px);
   padding-bottom: 32px;
+  background: #ffffff;
 }
 
 header {
   margin-bottom: 24px;
   padding: 12px 0;
-  border-bottom: 1px solid black;
+  border-bottom: 4px solid #ffcf40;
+  background: #173b61;
+  color: #ffffff;
+}
+
+header a {
+  color: #ffffff;
+}
+
+header a:hover {
+  color: #ffcf40;
 }
 
 header h1 {
@@ -58,6 +70,7 @@ h2,
 h3,
 h4 {
   margin-bottom: 8px;
+  color: #173b61;
 }
 
 p {
@@ -65,7 +78,7 @@ p {
 }
 
 a {
-  color: blue;
+  color: #174f9b;
 }
 
 a:hover {
@@ -118,12 +131,15 @@ a:active {
 
 .stage {
   padding: 10px;
-  border: 1px solid black;
+  border: 1px solid #173b61;
+  background: #ffffff;
 }
 
 fieldset {
   margin: 12px 0;
   padding: 10px;
+  border: 1px solid #527da8;
+  background: #edf4fa;
 }
 
 .choice {
@@ -152,8 +168,8 @@ textarea {
   margin-top: 4px;
   padding: 5px;
   color: black;
-  background: white;
-  border: 1px solid black;
+  background: #fffbe8;
+  border: 1px solid #173b61;
   resize: vertical;
 }
 
@@ -161,8 +177,8 @@ button {
   min-height: 42px;
   padding: 5px 10px;
   color: black;
-  background: white;
-  border: 1px solid black;
+  background: #dbe9f5;
+  border: 1px solid #173b61;
   border-radius: 0;
   font: inherit;
   cursor: pointer;
@@ -174,7 +190,7 @@ button:disabled {
 }
 
 button:hover:not(:disabled) {
-  background: #eeeeee;
+  background: #ffdf73;
 }
 
 button:active:not(:disabled) {
@@ -194,8 +210,8 @@ pre {
   max-width: 100%;
   overflow-x: auto;
   padding: 8px;
-  border: 1px solid black;
-  background: white;
+  border: 1px solid #6f6a4f;
+  background: #f4f0dc;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
@@ -207,8 +223,9 @@ pre {
 
 blockquote {
   margin-left: 0;
-  padding-left: 12px;
-  border-left: 3px solid black;
+  padding: 8px 8px 8px 12px;
+  border-left: 4px solid #174f9b;
+  background: #edf4fa;
 }
 
 dl {
@@ -235,20 +252,30 @@ table {
 th,
 td {
   padding: 6px;
-  border: 1px solid black;
+  border: 1px solid #173b61;
   text-align: left;
   vertical-align: top;
   overflow-wrap: anywhere;
 }
 
+th {
+  background: #173b61;
+  color: #ffffff;
+}
+
+tbody tr:nth-child(even) td {
+  background: #edf4fa;
+}
+
 tbody tr:hover td,
 tbody tr:hover th {
-  background: #f5f5f5;
+  background: #ffedaa;
 }
 
 .notice {
   padding: 6px;
-  border: 1px dashed black;
+  border: 1px dashed #8a6500;
+  background: #fff2b8;
 }
 
 .error {
@@ -277,6 +304,8 @@ summary:hover {
 
 footer {
   padding: 8px 0 20px;
+  background: #173b61;
+  color: #ffffff;
 }
 
 footer p {
