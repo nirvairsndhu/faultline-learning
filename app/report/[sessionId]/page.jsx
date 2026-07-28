@@ -6,7 +6,7 @@ export default async function Report({ params }) {
 
   return (
     <>
-      <main>
+      <main className="report-page">
         <header>
           <h1>FAULTLINE / anonymous report</h1>
           <p><Link href="/">home</Link></p>

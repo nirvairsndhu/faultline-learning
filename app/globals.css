@@ -82,6 +82,26 @@ header nav {
   accent-color: var(--manila);
 }
 
+.learning-header {
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  display: grid;
+  grid-template-columns: auto minmax(180px, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+}
+
+.learning-header h1,
+.learning-header p {
+  margin: 0;
+}
+
+.pack-summary {
+  padding-bottom: 12px;
+  border-bottom: 3px double var(--bottle);
+}
+
 section {
   margin: 20px 0;
 }
@@ -140,19 +160,48 @@ a:active {
 }
 
 .scenario-list li {
-  margin: 0 0 24px;
-  padding: 0 0 16px;
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: start;
+  margin: 0;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--bottle);
 }
 
-.scenario-list h3,
+.scenario-list h3 {
+  margin: 0 0 5px;
+}
+
 .scenario-list p {
   margin: 4px 0 8px;
+}
+
+.scenario-index {
+  font-weight: bold;
+}
+
+.scenario-meta {
+  font-weight: bold;
+}
+
+.scenario-start {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
 }
 
 .stage {
   padding: 10px;
   border: 1px solid var(--bottle);
   background: var(--manila);
+}
+
+.stage > h3:first-child {
+  margin-top: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--bottle);
 }
 
 fieldset {
@@ -235,6 +284,13 @@ button:active:not(:disabled) {
   color: var(--bottle);
   background: var(--manila);
   border-style: dashed;
+}
+
+.simulation-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
 }
 
 button:focus-visible,
@@ -323,12 +379,15 @@ tbody tr:hover th {
 .error {
   color: var(--bottle);
   font-weight: bold;
-  text-decoration: underline wavy;
+  padding-left: 8px;
+  border-left: 4px dashed var(--bottle);
 }
 
 .success {
   color: var(--bottle);
   font-weight: bold;
+  padding-left: 8px;
+  border-left: 4px double var(--bottle);
 }
 
 .success-box {
@@ -404,6 +463,14 @@ footer p {
     width: 100%;
   }
 
+  .simulation-controls {
+    display: grid;
+  }
+
+  .simulation-controls button {
+    width: 100%;
+  }
+
   dl {
     display: block;
   }
@@ -429,10 +496,64 @@ footer p {
   .home-intro {
     position: static;
   }
+
+  .scenario-list li {
+    grid-template-columns: 28px minmax(0, 1fr);
+  }
+
+  .scenario-start {
+    grid-column: 2;
+  }
+
+  .learning-header {
+    position: static;
+    display: block;
+  }
+
+  .learning-header .progress-status {
+    margin: 8px 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+}
+
+@media print {
+  html,
+  body,
+  main {
+    background: var(--manila);
+    color: var(--bottle);
+  }
+
+  body {
+    print-color-adjust: exact;
+  }
+
+  main {
+    width: 100%;
+    min-height: 0;
+  }
+
+  header {
+    position: static;
+    background: var(--manila);
+    color: var(--bottle);
+    border-bottom: 2px solid var(--bottle);
+  }
+
+  header a {
+    color: var(--bottle);
+  }
+
+  nav,
+  footer,
+  button,
+  progress,
+  .report-page details {
+    display: none;
   }
 }

@@ -34,10 +34,13 @@ export default function Home() {
             <ol className="scenario-list" aria-label="Physics scenarios">
               {PACKS.map((pack, index) => (
                 <li key={pack.id}>
-                  <h3>{index + 1}. <Link href={`/learn/${pack.id}`}>{pack.title}</Link></h3>
-                  <p><small>{scenarioMeta[pack.id]}</small></p>
-                  <p>{pack.problem}</p>
-                  <Link href={`/learn/${pack.id}`}>start</Link>
+                  <span className="scenario-index">0{index + 1}</span>
+                  <div className="scenario-info">
+                    <h3><Link href={`/learn/${pack.id}`}>{pack.title}</Link></h3>
+                    <p className="scenario-meta"><small>{scenarioMeta[pack.id]}</small></p>
+                    <p>{pack.problem}</p>
+                  </div>
+                  <Link className="scenario-start" href={`/learn/${pack.id}`}>start →</Link>
                 </li>
               ))}
             </ol>

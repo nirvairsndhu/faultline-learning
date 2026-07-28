@@ -88,7 +88,7 @@ function GraphText({ pack, edges }) {
   );
 }
 
-export function SimulationPanel({ pack, ran, run }) {
+export function SimulationPanel({ pack, ran, run, reset }) {
   const vacuum = freeFallTime(20);
   const forces = collisionForces();
   const shot = projectileAt(.8);
@@ -129,7 +129,10 @@ x_at_0.8s=${shot.x.toFixed(1)}m`;
     <div className="simulation-panel">
       <p><strong>model input:</strong> {input}</p>
       <pre className="ascii-diagram">{diagram}</pre>
-      <button onClick={run}>{ran ? "Run again" : "Run simulation"}</button>
+      <div className="simulation-controls">
+        <button onClick={run}>{ran ? "Run again" : "Run simulation"}</button>
+        {ran && <button className="secondary-action" onClick={reset}>Reset simulation</button>}
+      </div>
       <details open={ran}>
         <summary>simulation output</summary>
         <pre>{ran ? output : "simulation_status=not_run"}</pre>

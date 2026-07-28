@@ -68,13 +68,13 @@ export default function FaultlineApp({ pack, demo = false }) {
   return (
     <>
       <main>
-        <header>
+        <header className="learning-header">
           <h1><Link href="/">FAULTLINE</Link></h1>
           <ProgressStatus stages={stages} current={stage} />
           <p><strong>Cached analysis, live validation</strong></p>
         </header>
 
-        <section>
+        <section className="pack-summary">
           <p>pack_id: {pack.id}</p>
           <h2>{pack.title}</h2>
           <p>{pack.problem}</p>
@@ -169,12 +169,22 @@ export default function FaultlineApp({ pack, demo = false }) {
         {stage === "lab" && (
           <section className="stage">
             <h3>5. Local simulation</h3>
-            <SimulationPanel pack={pack} ran={ran} run={() => setRan(true)} />
+            <SimulationPanel
+              pack={pack}
+              ran={ran}
+              run={() => setRan(true)}
+              reset={() => setRan(false)}
+            />
             {ran && (
               <div className="success-box">
                 <strong>Observed result</strong>
                 <p>{pack.observation}</p>
-                <p>prediction: {pack.choices.find((choice) => choice.id === prediction)?.label}</p>
+                <dl className="comparison">
+                  <dt>your prediction</dt>
+                  <dd>{pack.choices.find((choice) => choice.id === prediction)?.label}</dd>
+                  <dt>observed</dt>
+                  <dd>{pack.observation}</dd>
+                </dl>
                 <StageActions onBack={() => advance("predict")}>
                   <button onClick={() => advance("teach")}>Explain again</button>
                 </StageActions>
