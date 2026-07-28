@@ -10,7 +10,7 @@
   --pink: #ffddd7;
   --green: #bfe8c8;
   --red: #c9342d;
-  --font: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font: var(--font-faultline), sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -404,7 +404,16 @@ dd { margin: 3px 0; line-height: 1.4; }
 .readout span { color: var(--muted); font-size: 12px; line-height: 1.35; }
 .observation { margin-top: 17px; padding: 15px; border: 1px solid #277344; background: var(--green); }
 .observation > span { color: #17512d; font-size: 10px; font-weight: 800; text-transform: uppercase; }
-.warning { color: #9b4d00 !important; font-weight: 700; }
+.warning { color: #9b4d00; font-weight: 700; }
+.form-error {
+  margin: 12px 0;
+  padding: 10px 12px;
+  border-left: 4px solid var(--red);
+  background: var(--pink);
+  color: #7d1f1b;
+  font-size: 13px;
+  line-height: 1.4;
+}
 
 .report { max-width: 900px; }
 .report > h1 { margin: 59px 0 15px; font-size: clamp(45px, 7vw, 70px); line-height: .95; letter-spacing: -.04em; }
@@ -424,10 +433,33 @@ dd { margin: 3px 0; line-height: 1.4; }
 .route-loading small { color: var(--muted); font-size: 11px; }
 @keyframes quick-load { from { width: 10%; } to { width: 100%; } }
 
+/* Evaluation is intentionally denser than the demo flow. */
+.evaluation .workhead { max-width: 780px; padding-bottom: 35px; }
+.eval-grid {
+  display: grid;
+  grid-template-columns: 1.02fr .98fr;
+  gap: 12px;
+}
+.eval-grid article {
+  min-height: 245px;
+  padding: 22px 21px;
+  border: 2px solid var(--line);
+  background: var(--white);
+}
+.eval-grid article:nth-child(2) { min-height: 275px; border-radius: 7px 0 7px 0; }
+.eval-grid article:nth-child(3) { margin-top: -4px; background: var(--yellow); }
+.eval-grid h2 { margin: 0 0 18px; font-size: 24px; line-height: 1.05; }
+.eval-grid p { color: var(--muted); line-height: 1.5; }
+.eval-grid dl { display: grid; grid-template-columns: 1fr auto; gap: 9px 15px; }
+.eval-grid dt, .eval-grid dd { margin: 0; }
+.eval-grid dd { font-weight: 700; }
+
 @media (max-width: 850px) {
   .scenario-grid { grid-template-columns: 1fr; }
   .scenario-card, .scenario-card.card-2, .scenario-card.card-3 { min-height: 280px; margin-top: 0; }
   .graph-stage { grid-template-columns: 1fr; }
+  .eval-grid { grid-template-columns: 1fr; }
+  .eval-grid article:nth-child(3) { margin-top: 0; }
 }
 
 @media (max-width: 680px) {
