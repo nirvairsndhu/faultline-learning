@@ -3,27 +3,18 @@
 }
 
 :root {
-  --paper: #f3eedc;
-  --putty: #c9c2a3;
-  --ink: #25231e;
   --bottle: #21463d;
-  --mustard: #d7a927;
-  --brick: #963e29;
-  --sage: #dce6cf;
   --manila: #eed9b7;
-  --seafoam: #b8d8cc;
-  --error: #922d23;
-  --success: #2f684b;
 }
 
 html {
-  background: var(--putty);
-  color: var(--ink);
+  background: var(--bottle);
+  color: var(--bottle);
 }
 
 body {
   margin: 0;
-  color: var(--ink);
+  color: var(--bottle);
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -36,23 +27,23 @@ footer {
 main {
   min-height: calc(100vh - 120px);
   padding-bottom: 32px;
-  background: var(--paper);
+  background: var(--manila);
 }
 
 header {
   margin-bottom: 24px;
   padding: 12px 0;
-  border-bottom: 4px solid var(--mustard);
+  border-bottom: 4px solid var(--manila);
   background: var(--bottle);
-  color: var(--paper);
+  color: var(--manila);
 }
 
 header a {
-  color: var(--paper);
+  color: var(--manila);
 }
 
 header a:hover {
-  color: var(--mustard);
+  color: var(--manila);
 }
 
 header h1 {
@@ -92,7 +83,7 @@ p {
 }
 
 a {
-  color: var(--brick);
+  color: var(--bottle);
 }
 
 a:hover {
@@ -146,14 +137,14 @@ a:active {
 .stage {
   padding: 10px;
   border: 1px solid var(--bottle);
-  background: var(--paper);
+  background: var(--manila);
 }
 
 fieldset {
   margin: 12px 0;
   padding: 10px;
   border: 1px solid var(--bottle);
-  background: var(--sage);
+  background: var(--manila);
 }
 
 .choice {
@@ -181,8 +172,8 @@ textarea {
   display: block;
   margin-top: 4px;
   padding: 5px;
-  color: var(--ink);
-  background: var(--paper);
+  color: var(--bottle);
+  background: var(--manila);
   border: 1px solid var(--bottle);
   resize: vertical;
 }
@@ -190,8 +181,8 @@ textarea {
 button {
   min-height: 42px;
   padding: 5px 10px;
-  color: var(--ink);
-  background: var(--seafoam);
+  color: var(--manila);
+  background: var(--bottle);
   border: 1px solid var(--bottle);
   border-radius: 0;
   font: inherit;
@@ -200,11 +191,12 @@ button {
 
 button:disabled {
   cursor: not-allowed;
-  opacity: .45;
+  border-style: dashed;
 }
 
 button:hover:not(:disabled) {
-  background: var(--mustard);
+  color: var(--bottle);
+  background: var(--manila);
 }
 
 button:active:not(:disabled) {
@@ -216,7 +208,7 @@ a:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 summary:focus-visible {
-  outline: 2px solid var(--brick);
+  outline: 2px solid var(--bottle);
   outline-offset: 2px;
 }
 
@@ -238,8 +230,8 @@ pre {
 blockquote {
   margin-left: 0;
   padding: 8px 8px 8px 12px;
-  border-left: 4px solid var(--brick);
-  background: var(--sage);
+  border-left: 4px solid var(--bottle);
+  background: var(--manila);
 }
 
 dl {
@@ -274,38 +266,41 @@ td {
 
 th {
   background: var(--bottle);
-  color: var(--paper);
+  color: var(--manila);
 }
 
 tbody tr:nth-child(even) td {
-  background: var(--sage);
+  background: var(--bottle);
+  color: var(--manila);
 }
 
 tbody tr:hover td,
 tbody tr:hover th {
   background: var(--manila);
+  color: var(--bottle);
 }
 
 .notice {
   padding: 6px;
-  border: 1px dashed var(--brick);
+  border: 1px dashed var(--bottle);
   background: var(--manila);
 }
 
 .error {
-  color: var(--error);
+  color: var(--bottle);
   font-weight: bold;
+  text-decoration: underline wavy;
 }
 
 .success {
-  color: var(--success);
+  color: var(--bottle);
   font-weight: bold;
 }
 
 .success-box {
   margin-top: 12px;
   padding: 8px;
-  border: 2px solid var(--success);
+  border: 3px double var(--bottle);
 }
 
 details {
@@ -319,7 +314,7 @@ summary:hover {
 footer {
   padding: 8px 0 20px;
   background: var(--bottle);
-  color: var(--paper);
+  color: var(--manila);
 }
 
 footer p {
