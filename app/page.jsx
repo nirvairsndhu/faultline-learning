@@ -2,6 +2,12 @@ import Link from "next/link";
 import { PACKS } from "@/content/packs";
 import SiteFooter from "@/components/SiteFooter";
 
+const scenarioMeta = {
+  "vacuum-drop": "free fall / about 4 min",
+  "collision-forces": "Newton's third law / about 4 min",
+  "projectile-motion": "two-axis motion / about 4 min",
+};
+
 export default function Home() {
   return (
     <>
@@ -29,6 +35,7 @@ export default function Home() {
               {PACKS.map((pack, index) => (
                 <li key={pack.id}>
                   <h3>{index + 1}. <Link href={`/learn/${pack.id}`}>{pack.title}</Link></h3>
+                  <p><small>{scenarioMeta[pack.id]}</small></p>
                   <p>{pack.problem}</p>
                   <Link href={`/learn/${pack.id}`}>start</Link>
                 </li>

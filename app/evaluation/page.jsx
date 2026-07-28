@@ -9,12 +9,14 @@ export default function EvaluationPage() {
     .filter((row) => row.mismatchReason)
     .map((row) => row.id);
 
-  const rows = [
+  const reasoningRows = [
     ["Misconception-positive", metrics.clearMisconceptionPositives],
     ["Valid-method negative", metrics.validMethodNegatives],
     ["Ambiguous", metrics.ambiguousCases],
     ["Hidden recall", metrics.hiddenMisconceptionRecall],
     ["Valid-method false-positive rate", metrics.validMethodFalsePositiveRate],
+  ];
+  const systemRows = [
     ["Evidence span validity", metrics.evidenceSpanValidity],
     ["Schema success rate", metrics.schemaSuccessRate],
     ["Deterministic simulation pass rate", metrics.deterministicSimulationPassRate],
@@ -36,7 +38,12 @@ export default function EvaluationPage() {
             <tr><th>metric</th><th>value</th></tr>
           </thead>
           <tbody>
-            {rows.map(([name, value]) => (
+            <tr className="metric-group"><th colSpan="2">reasoning cases</th></tr>
+            {reasoningRows.map(([name, value]) => (
+              <tr key={name}><td>{name}</td><td>{value}</td></tr>
+            ))}
+            <tr className="metric-group"><th colSpan="2">system checks</th></tr>
+            {systemRows.map(([name, value]) => (
               <tr key={name}><td>{name}</td><td>{value}</td></tr>
             ))}
           </tbody>

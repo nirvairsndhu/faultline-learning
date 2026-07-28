@@ -4,3 +4,12 @@ test("all packs open and scenario selection works", async ({ page }) => { await 
     await expect(page.getByText("Cached analysis, live validation")).toBeVisible();
 } });
 test("vacuum prediction cannot be skipped", async ({ page }) => { await page.goto("/learn/vacuum-drop"); await page.getByLabel("They land together").check(); await page.getByRole("button", { name: "Explain your method" }).click(); await page.getByLabel("Reasoning").fill("The heavier mass has more gravity so it accelerates faster."); await page.getByRole("button", { name: "Map reasoning" }).click(); await page.getByRole("button", { name: "Make prediction" }).click(); await expect(page.getByRole("button", { name: "Unlock simulation" })).toBeDisabled(); });
+test("progress and previous-step navigation preserve the answer", async ({ page }) => {
+    await page.goto("/learn/vacuum-drop");
+    await expect(page.getByRole("progressbar")).toHaveAttribute("value", "1");
+    await page.getByLabel("They land together").check();
+    await page.getByRole("button", { name: "Explain your method" }).click();
+    await expect(page.getByRole("progressbar")).toHaveAttribute("value", "2");
+    await page.getByRole("button", { name: "Previous step" }).click();
+    await expect(page.getByLabel("They land together")).toBeChecked();
+});
