@@ -14,26 +14,28 @@ html {
 
 body {
   margin: 0;
+  padding: 18px 0;
   color: var(--bottle);
   font-family: Arial, Helvetica, sans-serif;
 }
 
 main,
 footer {
-  width: min(760px, calc(100% - 24px));
+  width: min(880px, calc(100% - 24px));
   margin: 0 auto;
 }
 
 main {
   min-height: calc(100vh - 120px);
-  padding-bottom: 32px;
+  padding: 0 28px 40px;
+  border: 2px solid var(--bottle);
   background: var(--manila);
 }
 
 header {
-  margin-bottom: 24px;
-  padding: 12px 0;
-  border-bottom: 4px solid var(--manila);
+  margin: 0 -28px 30px;
+  padding: 18px 28px;
+  border-bottom: 2px solid var(--bottle);
   background: var(--bottle);
   color: var(--manila);
 }
@@ -48,6 +50,8 @@ header a:hover {
 
 header h1 {
   margin: 0 0 8px;
+  font-size: 28px;
+  letter-spacing: .06em;
 }
 
 .home-header {
@@ -68,7 +72,7 @@ header nav {
 }
 
 section {
-  margin: 20px 0;
+  margin: 26px 0;
 }
 
 h2,
@@ -78,12 +82,17 @@ h4 {
   color: var(--bottle);
 }
 
+h2 {
+  font-size: 22px;
+}
+
 p {
-  line-height: 1.35;
+  line-height: 1.45;
 }
 
 a {
   color: var(--bottle);
+  text-underline-offset: 3px;
 }
 
 a:hover {
@@ -92,30 +101,42 @@ a:hover {
 }
 
 a:active {
-  opacity: .65;
+  text-decoration-style: double;
 }
 
 .main-link {
   min-height: 42px;
   display: inline-flex;
   align-items: center;
-  padding: 4px 0;
+  padding: 5px 8px;
+  border: 1px solid var(--bottle);
+  font-weight: bold;
 }
 
 .home-layout {
   display: grid;
   grid-template-columns: minmax(180px, .7fr) minmax(0, 1.3fr);
-  gap: 48px;
+  gap: 56px;
   align-items: start;
 }
 
 .home-intro {
   position: sticky;
   top: 12px;
+  padding: 12px 0;
+  border-top: 3px double var(--bottle);
+  border-bottom: 3px double var(--bottle);
 }
 
 .home-scenarios {
-  margin-top: 20px;
+  margin-top: 26px;
+}
+
+.home-scenarios > h2 {
+  margin: 0 0 16px;
+  padding: 8px 10px;
+  background: var(--bottle);
+  color: var(--manila);
 }
 
 .scenario-list {
@@ -125,8 +146,9 @@ a:active {
 }
 
 .scenario-list li {
-  margin: 0 0 24px;
-  padding: 0 0 16px;
+  margin: 0;
+  padding: 14px 0 20px;
+  border-bottom: 1px solid var(--bottle);
 }
 
 .scenario-list h3,
@@ -134,23 +156,41 @@ a:active {
   margin: 4px 0 8px;
 }
 
+.scenario-list h3 {
+  font-size: 19px;
+}
+
 .stage {
-  padding: 10px;
-  border: 1px solid var(--bottle);
+  padding: 18px;
+  border: 2px solid var(--bottle);
   background: var(--manila);
+}
+
+.stage > h3:first-child {
+  margin: -18px -18px 18px;
+  padding: 10px 18px;
+  background: var(--bottle);
+  color: var(--manila);
 }
 
 fieldset {
-  margin: 12px 0;
-  padding: 10px;
+  margin: 18px 0;
+  padding: 14px;
   border: 1px solid var(--bottle);
   background: var(--manila);
 }
 
+legend {
+  padding: 0 6px;
+  font-weight: bold;
+}
+
 .choice {
-  min-height: 36px;
+  min-height: 40px;
   display: block;
-  padding: 7px 2px;
+  margin: 0;
+  padding: 9px 4px;
+  border-bottom: 1px dotted var(--bottle);
 }
 
 .choice input {
@@ -158,6 +198,8 @@ fieldset {
 }
 
 .choice:has(input:checked) {
+  background: var(--bottle);
+  color: var(--manila);
   font-weight: bold;
 }
 
@@ -168,10 +210,10 @@ label {
 
 textarea {
   width: 100%;
-  min-height: 120px;
+  min-height: 135px;
   display: block;
   margin-top: 4px;
-  padding: 5px;
+  padding: 10px;
   color: var(--bottle);
   background: var(--manila);
   border: 1px solid var(--bottle);
@@ -180,12 +222,13 @@ textarea {
 
 button {
   min-height: 42px;
-  padding: 5px 10px;
+  padding: 7px 13px;
   color: var(--manila);
   background: var(--bottle);
   border: 1px solid var(--bottle);
   border-radius: 0;
   font: inherit;
+  font-weight: bold;
   cursor: pointer;
 }
 
@@ -215,9 +258,11 @@ summary:focus-visible {
 pre {
   max-width: 100%;
   overflow-x: auto;
-  padding: 8px;
-  border: 1px solid var(--bottle);
+  padding: 14px;
+  border: 2px solid var(--bottle);
   background: var(--manila);
+  font-size: 13px;
+  line-height: 1.45;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
@@ -229,8 +274,9 @@ pre {
 
 blockquote {
   margin-left: 0;
-  padding: 8px 8px 8px 12px;
-  border-left: 4px solid var(--bottle);
+  padding: 10px 12px;
+  border: 1px solid var(--bottle);
+  border-left-width: 6px;
   background: var(--manila);
 }
 
@@ -257,7 +303,7 @@ table {
 
 th,
 td {
-  padding: 6px;
+  padding: 9px;
   border: 1px solid var(--bottle);
   text-align: left;
   vertical-align: top;
@@ -281,7 +327,7 @@ tbody tr:hover th {
 }
 
 .notice {
-  padding: 6px;
+  padding: 10px;
   border: 1px dashed var(--bottle);
   background: var(--manila);
 }
@@ -299,7 +345,7 @@ tbody tr:hover th {
 
 .success-box {
   margin-top: 12px;
-  padding: 8px;
+  padding: 12px;
   border: 3px double var(--bottle);
 }
 
@@ -312,7 +358,13 @@ summary:hover {
 }
 
 footer {
-  padding: 8px 0 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 18px;
+  align-items: center;
+  margin-top: 14px;
+  padding: 14px 20px;
+  border: 2px solid var(--manila);
   background: var(--bottle);
   color: var(--manila);
 }
@@ -321,10 +373,29 @@ footer p {
   margin: 5px 0;
 }
 
+footer p:last-child {
+  justify-self: end;
+}
+
 @media (max-width: 480px) {
+  body {
+    padding: 0;
+  }
+
   main,
   footer {
-    width: calc(100% - 16px);
+    width: 100%;
+  }
+
+  main {
+    padding: 0 12px 32px;
+    border-right: 0;
+    border-left: 0;
+  }
+
+  header {
+    margin: 0 -12px 24px;
+    padding: 14px 12px;
   }
 
   .scenario-list {
@@ -332,7 +403,12 @@ footer p {
   }
 
   .stage {
-    padding: 8px;
+    padding: 12px;
+  }
+
+  .stage > h3:first-child {
+    margin: -12px -12px 14px;
+    padding: 9px 12px;
   }
 
   dl {
@@ -341,6 +417,18 @@ footer p {
 
   dd {
     margin-bottom: 8px;
+  }
+
+  footer {
+    display: block;
+    margin-top: 0;
+    padding: 12px;
+    border-right: 0;
+    border-left: 0;
+  }
+
+  footer p:last-child {
+    justify-self: auto;
   }
 }
 
