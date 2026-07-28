@@ -68,6 +68,15 @@ a {
   color: blue;
 }
 
+a:hover {
+  color: black;
+  text-decoration-thickness: 2px;
+}
+
+a:active {
+  opacity: .65;
+}
+
 .main-link {
   min-height: 42px;
   display: inline-flex;
@@ -127,6 +136,10 @@ fieldset {
   margin-right: 8px;
 }
 
+.choice:has(input:checked) {
+  font-weight: bold;
+}
+
 label {
   display: block;
   margin: 12px 0;
@@ -158,6 +171,14 @@ button {
 button:disabled {
   cursor: not-allowed;
   opacity: .45;
+}
+
+button:hover:not(:disabled) {
+  background: #eeeeee;
+}
+
+button:active:not(:disabled) {
+  transform: translate(1px, 1px);
 }
 
 button:focus-visible,
@@ -220,6 +241,11 @@ td {
   overflow-wrap: anywhere;
 }
 
+tbody tr:hover td,
+tbody tr:hover th {
+  background: #f5f5f5;
+}
+
 .notice {
   padding: 6px;
   border: 1px dashed black;
@@ -243,6 +269,10 @@ td {
 
 details {
   margin: 12px 0;
+}
+
+summary:hover {
+  text-decoration: underline;
 }
 
 footer {
