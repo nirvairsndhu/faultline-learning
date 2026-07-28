@@ -1,9 +1,8 @@
 export default function Loading() {
   return (
-    <div className="route-loading" role="status" aria-live="polite">
-      <span className="mark">FAULTLINE</span>
-      <div className="loading-track"><span /></div>
-      <small>loading experiment…</small>
-    </div>
+    <main role="status" aria-live="polite">
+      <h1>FAULTLINE</h1>
+      <p>Loading...</p>
+    </main>
   );
 }

@@ -1,81 +1,378 @@
 "use client";
+
 import { useState } from "react";
 import Link from "next/link";
-import { motion, useReducedMotion } from "motion/react";
 import { freeFallTime, collisionForces, projectileAt } from "@/lib/domain/physics";
 import { graphDiff } from "@/lib/domain/graph-validator";
 import SiteFooter from "@/components/SiteFooter";
-const stages = ["explain", "graph", "predict", "lab", "teach", "repair", "transfer", "report"];
-const labels = { answer: "Explain", explain: "Explain", graph: "Map", predict: "Predict", lab: "Test", teach: "Teach back", repair: "Repair", transfer: "Transfer", report: "Report" };
+
+const stages = ["answer", "explain", "graph", "predict", "lab", "teach", "repair", "transfer", "report"];
+
 export default function FaultlineApp({ pack, demo = false }) {
-    const [stage, setStage] = useState("answer");
-    const [answer, setAnswer] = useState(demo ? pack.correctAnswer : "");
-    const [explanation, setExplanation] = useState(demo ? "Mass causes greater free-fall acceleration." : "");
-    const [analysis, setAnalysis] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
-    const [prediction, setPrediction] = useState(demo ? pack.correctAnswer : "");
-    const [ran, setRan] = useState(false);
-    const [teach, setTeach] = useState(demo ? "In a vacuum, acceleration is independent of mass." : "");
-    const [teachAnalysis, setTeachAnalysis] = useState(null);
-    const [teachVerification, setTeachVerification] = useState(null);
-    const [transfer, setTransfer] = useState(demo ? pack.transfer.correctAnswer : "");
-    const [transferWhy, setTransferWhy] = useState(demo ? "Both objects have the same acceleration independent of mass in a vacuum." : "");
-    const [transferVerification, setTransferVerification] = useState(null);
-    const [attempts, setAttempts] = useState(0);
-    const reduce = useReducedMotion();
-    const correct = answer === pack.correctAnswer;
-    const before = (analysis?.edges || []);
-    const after = (teachAnalysis?.edges || []);
-    const diff = graphDiff(before, after);
-    const teachValid = Boolean(teachVerification?.success);
-    const requestAnalysis = async (payload) => {
-        setLoading(true);
-        setError("");
-        try {
-            const response = await fetch("/api/analyze", {
-                method: "POST",
-                headers: { "content-type": "application/json" },
-                body: JSON.stringify(payload),
-            });
-            const result = await response.json();
-            if (!response.ok) throw new Error(result.error || "The reasoning check could not be completed.");
-            return result;
-        } catch (requestError) {
-            setError(requestError instanceof Error ? requestError.message : "The reasoning check could not be completed.");
-            return null;
-        } finally {
-            setLoading(false);
-        }
-    };
-    const verify = (phase, text, selectedAnswer) => requestAnalysis({ packId: pack.id, explanation: text, phase, selectedAnswer });
-    const advance = (next) => {
-        setError("");
-        setStage(next);
-    };
-    return <><main className="instrument"><header className="topbar"><Link href="/" className="mark">FAULTLINE</Link><div className="progress" aria-label="Learning progress">{stages.slice(0, 7).map(s => <span key={s} className={stages.indexOf(s) <= stages.indexOf(stage) ? "done" : ""}>{labels[s]}</span>)}</div><span className="reliability" title="No live model key is required">Cached analysis, live validation</span></header>
- <div className="workhead"><p className="kicker">{pack.shortTitle} / bounded reasoning sequence</p><h1>{pack.title}</h1><p>{pack.problem}</p>{demo && <p className="reliability">Demo capture mode — inputs are preloaded; validation gates remain live.</p>}</div>
- {stage === "answer" && <section className="stage"><h2>1. Commit to an answer</h2><fieldset><legend>Choose before seeing any intervention.</legend>{pack.choices.map(c => <label className={`choice ${answer === c.id ? "selected" : ""}`} key={c.id}><input type="radio" name="answer" value={c.id} onChange={() => setAnswer(c.id)}/>{c.label}</label>)}</fieldset><button className="button" disabled={!answer} onClick={() => advance("explain")}>Explain your method</button></section>}
- {stage === "explain" && <section className="stage" aria-busy={loading}><h2>2. Explain the causal method</h2><p className="hint">State what causes what. Your words are treated as quoted data, not instructions.</p><label>Reasoning<textarea value={explanation} maxLength={1600} onChange={e => setExplanation(e.target.value)} placeholder="Explain the relationship that determines the outcome."/></label>{loading && <p role="status" className="hint">Validating evidence and causal relations…</p>}{error && <p role="alert" className="form-error">{error}</p>}<button className="button" disabled={loading || explanation.trim().length < 8} onClick={async () => { const result = await requestAnalysis({ packId: pack.id, explanation }); if (!result) return; setAnalysis(result); advance("graph"); }}>{loading ? "Checking reasoning…" : "Map reasoning"}</button></section>}
- {stage === "graph" && analysis && <section className="graph-stage"><div className="graph-area"><h2>3. Answer ≠ method</h2><div className={`answer-status ${correct ? "ok" : "bad"}`}>{correct ? "Answer selected: correct" : "Answer selected: incorrect"}<small>Method validity is assessed separately.</small></div><ReasoningGraph pack={pack} edges={before} reduced={Boolean(reduce)}/><GraphText pack={pack} edges={before}/></div><aside className="evidence"><p className="kicker">{analysis.decision === "diagnose" ? "Fault located" : "Analysis status"}</p><h2>{analysis.decision === "diagnose" ? "A relationship is unsupported." : analysis.decision === "ask_follow_up" ? "Clarification needed." : "Method appears coherent."}</h2><p>{analysis.summary}</p>{analysis.edges[0] && <blockquote>“{analysis.edges[0].evidence}”</blockquote>}<dl><dt>Confidence</dt><dd>{Math.round(analysis.confidence * 100)}% fixture</dd><dt>Validation</dt><dd>live deterministic checks</dd></dl><button className="button" onClick={() => advance("predict")}>Make prediction</button></aside></section>}
- {stage === "predict" && <section className="stage"><h2>4. Prediction gate</h2><p>{pack.prediction}</p><fieldset>{pack.choices.map(c => <label className={`choice ${prediction === c.id ? "selected" : ""}`} key={c.id}><input type="radio" name="prediction" onChange={() => setPrediction(c.id)}/>{c.label}</label>)}</fieldset><button className="button" disabled={!prediction} onClick={() => advance("lab")}>Unlock simulation</button></section>}
- {stage === "lab" && <section className="lab"><h2>5. Targeted local simulation</h2><Lab pack={pack} ran={ran} run={() => setRan(true)}/>{ran && <div className="observation"><span>Observed result</span><p>{pack.observation}</p><p className="mono">Prediction: {pack.choices.find(c => c.id === prediction)?.label}</p><button className="button" onClick={() => advance("teach")}>Explain again</button></div>}</section>}
- {stage === "teach" && <section className="stage" aria-busy={loading}><h2>6. Teach the model back</h2><p className="hint">Do not copy an answer. Describe the relevant causes and relationships in your own words.</p><label>Revised reasoning<textarea value={teach} onChange={e => setTeach(e.target.value)} placeholder="What relationship did the test isolate?"/></label>{error && <p role="alert" className="form-error">{error}</p>}<button className="button" disabled={loading || teach.trim().length < 12} onClick={async () => { const result = await verify("teach_back", teach); if (!result) return; setTeachAnalysis(result.analysis); setTeachVerification(result.verification); advance("repair"); }}>{loading ? "Checking repair…" : "Verify repair"}</button></section>}
- {stage === "repair" && <section className="graph-stage"><div className="graph-area"><h2>7. Repair trace</h2><ReasoningGraph pack={pack} edges={after} before={before} missing={teachVerification?.requiredMet === false} reduced={Boolean(reduce)}/><GraphText pack={pack} edges={after}/></div><aside className="evidence"><p className="kicker">Live repair check</p><h2>{teachValid ? "Required relations mapped." : "One relationship still needs revision."}</h2><p>Removed faulty relation: {diff.removed.map(e => `${e.source} → ${e.target}`).join(", ") || "none"}</p><p>Added relation: {diff.added.map(e => `${e.source} → ${e.target}`).join(", ") || "none"}</p><p>{teachVerification?.contradiction ? "Contradictory explanation: revise it." : teachVerification?.exactEvidence ? "Exact learner evidence validated." : "No valid evidence relation was found."}</p>{teachValid ? <button className="button" onClick={() => advance("transfer")}>Test transfer</button> : <button className="button" onClick={() => advance("teach")}>Revise explanation</button>}</aside></section>}
- {stage === "transfer" && <section className="stage" aria-busy={loading}><h2>8. Transfer to a changed context</h2><p>{pack.transfer.question}</p><fieldset>{pack.transfer.choices.map(c => <label className={`choice ${transfer === c.id ? "selected" : ""}`} key={c.id}><input type="radio" name="transfer" onChange={() => setTransfer(c.id)}/>{c.label}</label>)}</fieldset><label>Why?<textarea value={transferWhy} onChange={e => setTransferWhy(e.target.value)} placeholder="State the causal relationship."/></label>{attempts > 0 && <p className="warning">Use the active pack’s causal relation; an answer alone cannot finish this flow.</p>}{error && <p role="alert" className="form-error">{error}</p>}<button className="button" disabled={loading || !transfer || transferWhy.length < 12} onClick={async () => { const result = await verify("transfer", transferWhy, transfer); if (!result) return; setTransferVerification(result.verification); if (result.verification.success)
-        advance("report");
-    else
-        setAttempts(a => a + 1); }}>{loading ? "Checking transfer…" : "Verify transfer"}</button></section>}
- {stage === "report" && <section className="report stage"><p className="kicker">Anonymous session evidence</p><h2>Method repaired. Transfer verified.</h2><dl><dt>Pack</dt><dd>{pack.title}</dd><dt>Initial answer</dt><dd>{pack.choices.find(c => c.id === answer)?.label} ({correct ? "correct" : "incorrect"})</dd><dt>Initial method</dt><dd>{analysis?.summary}</dd><dt>Evidence</dt><dd>{analysis?.edges[0]?.evidence || "No fault edge"}</dd><dt>Intervention</dt><dd>Prediction + deterministic simulation</dd><dt>Transfer</dt><dd>{transferVerification?.success ? "answer and method verified" : "incomplete"}</dd><dt>Inference mode</dt><dd>Cached analysis, live validation</dd><dt>Session ID</dt><dd className="mono">local-{pack.id}-v1</dd></dl><Link className="button" href={`/report/local-${pack.id}-v1`}>Open report view</Link></section>}
- </main><SiteFooter /></>;
+  const [stage, setStage] = useState("answer");
+  const [answer, setAnswer] = useState(demo ? pack.correctAnswer : "");
+  const [explanation, setExplanation] = useState(demo ? "Mass causes greater free-fall acceleration." : "");
+  const [analysis, setAnalysis] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [prediction, setPrediction] = useState(demo ? pack.correctAnswer : "");
+  const [ran, setRan] = useState(false);
+  const [teach, setTeach] = useState(demo ? "In a vacuum, acceleration is independent of mass." : "");
+  const [teachAnalysis, setTeachAnalysis] = useState(null);
+  const [teachVerification, setTeachVerification] = useState(null);
+  const [transfer, setTransfer] = useState(demo ? pack.transfer.correctAnswer : "");
+  const [transferWhy, setTransferWhy] = useState(demo ? "Both objects have the same acceleration independent of mass in a vacuum." : "");
+  const [transferVerification, setTransferVerification] = useState(null);
+  const [attempts, setAttempts] = useState(0);
+
+  const correct = answer === pack.correctAnswer;
+  const before = analysis?.edges || [];
+  const after = teachAnalysis?.edges || [];
+  const diff = graphDiff(before, after);
+  const teachValid = Boolean(teachVerification?.success);
+
+  const requestAnalysis = async (payload) => {
+    setLoading(true);
+    setError("");
+    try {
+      const response = await fetch("/api/analyze", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || "The reasoning check could not be completed.");
+      return result;
+    } catch (requestError) {
+      setError(requestError instanceof Error ? requestError.message : "The reasoning check could not be completed.");
+      return null;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const verify = (phase, text, selectedAnswer) =>
+    requestAnalysis({ packId: pack.id, explanation: text, phase, selectedAnswer });
+
+  const advance = (next) => {
+    setError("");
+    setStage(next);
+  };
+
+  return (
+    <>
+      <main>
+        <header>
+          <h1><Link href="/">FAULTLINE</Link></h1>
+          <p>step {stages.indexOf(stage) + 1} of {stages.length}: {stage}</p>
+          <p><strong>Cached analysis, live validation</strong></p>
+        </header>
+
+        <section>
+          <p>pack_id: {pack.id}</p>
+          <h2>{pack.title}</h2>
+          <p>{pack.problem}</p>
+          {demo && <p className="notice">demo mode: inputs are preloaded, checks are still live</p>}
+        </section>
+
+        {stage === "answer" && (
+          <section className="stage">
+            <h3>1. Commit to an answer</h3>
+            <fieldset>
+              <legend>Choose before seeing the analysis.</legend>
+              {pack.choices.map((choice) => (
+                <label className="choice" key={choice.id}>
+                  <input
+                    type="radio"
+                    name="answer"
+                    value={choice.id}
+                    checked={answer === choice.id}
+                    onChange={() => setAnswer(choice.id)}
+                  />
+                  {choice.label}
+                </label>
+              ))}
+            </fieldset>
+            <button disabled={!answer} onClick={() => advance("explain")}>Explain your method</button>
+          </section>
+        )}
+
+        {stage === "explain" && (
+          <section className="stage" aria-busy={loading}>
+            <h3>2. Explain the causal method</h3>
+            <p>State what causes what. Your words are treated as data, not instructions.</p>
+            <label>
+              Reasoning
+              <textarea
+                value={explanation}
+                maxLength={1600}
+                onChange={(event) => setExplanation(event.target.value)}
+                placeholder="Explain the relationship that determines the outcome."
+              />
+            </label>
+            {loading && <p role="status">checking evidence and relations...</p>}
+            {error && <p role="alert" className="error">ERROR: {error}</p>}
+            <button
+              disabled={loading || explanation.trim().length < 8}
+              onClick={async () => {
+                const result = await requestAnalysis({ packId: pack.id, explanation });
+                if (!result) return;
+                setAnalysis(result);
+                advance("graph");
+              }}
+            >
+              {loading ? "Checking reasoning…" : "Map reasoning"}
+            </button>
+          </section>
+        )}
+
+        {stage === "graph" && analysis && (
+          <section className="stage">
+            <h3>3. Analysis output</h3>
+            <p className={correct ? "success" : "error"}>
+              answer_selected={correct ? "correct" : "incorrect"}
+            </p>
+            <ReasoningDump pack={pack} edges={before} />
+            <h4>{analysis.decision === "diagnose" ? "unsupported relationship found" : "analysis status"}</h4>
+            <p>{analysis.summary}</p>
+            {analysis.edges[0] && <blockquote>{analysis.edges[0].evidence}</blockquote>}
+            <dl>
+              <dt>confidence</dt><dd>{Math.round(analysis.confidence * 100)}% fixture</dd>
+              <dt>validation</dt><dd>live deterministic checks</dd>
+            </dl>
+            <GraphText pack={pack} edges={before} />
+            <button onClick={() => advance("predict")}>Make prediction</button>
+          </section>
+        )}
+
+        {stage === "predict" && (
+          <section className="stage">
+            <h3>4. Prediction gate</h3>
+            <p>{pack.prediction}</p>
+            <fieldset>
+              <legend>prediction</legend>
+              {pack.choices.map((choice) => (
+                <label className="choice" key={choice.id}>
+                  <input
+                    type="radio"
+                    name="prediction"
+                    checked={prediction === choice.id}
+                    onChange={() => setPrediction(choice.id)}
+                  />
+                  {choice.label}
+                </label>
+              ))}
+            </fieldset>
+            <button disabled={!prediction} onClick={() => advance("lab")}>Unlock simulation</button>
+          </section>
+        )}
+
+        {stage === "lab" && (
+          <section className="stage">
+            <h3>5. Local simulation</h3>
+            <Lab pack={pack} ran={ran} run={() => setRan(true)} />
+            {ran && (
+              <div className="success-box">
+                <strong>Observed result</strong>
+                <p>{pack.observation}</p>
+                <p>prediction: {pack.choices.find((choice) => choice.id === prediction)?.label}</p>
+                <button onClick={() => advance("teach")}>Explain again</button>
+              </div>
+            )}
+          </section>
+        )}
+
+        {stage === "teach" && (
+          <section className="stage" aria-busy={loading}>
+            <h3>6. Teach the model back</h3>
+            <p>Describe the relevant causes and relationships in your own words.</p>
+            <label>
+              Revised reasoning
+              <textarea
+                value={teach}
+                onChange={(event) => setTeach(event.target.value)}
+                placeholder="What relationship did the test isolate?"
+              />
+            </label>
+            {error && <p role="alert" className="error">ERROR: {error}</p>}
+            <button
+              disabled={loading || teach.trim().length < 12}
+              onClick={async () => {
+                const result = await verify("teach_back", teach);
+                if (!result) return;
+                setTeachAnalysis(result.analysis);
+                setTeachVerification(result.verification);
+                advance("repair");
+              }}
+            >
+              {loading ? "Checking repair…" : "Verify repair"}
+            </button>
+          </section>
+        )}
+
+        {stage === "repair" && (
+          <section className="stage">
+            <h3>7. Repair trace</h3>
+            <ReasoningDump
+              pack={pack}
+              edges={after}
+              before={before}
+              missing={teachVerification?.requiredMet === false}
+            />
+            <h4>{teachValid ? "Required relations mapped." : "One relationship still needs revision."}</h4>
+            <pre>{`removed=${diff.removed.map((edge) => `${edge.source}->${edge.target}`).join(",") || "none"}
+added=${diff.added.map((edge) => `${edge.source}->${edge.target}`).join(",") || "none"}
+evidence=${teachVerification?.exactEvidence ? "valid" : "not_valid"}
+contradiction=${teachVerification?.contradiction ? "true" : "false"}`}</pre>
+            {teachValid
+              ? <button onClick={() => advance("transfer")}>Test transfer</button>
+              : <button onClick={() => advance("teach")}>Revise explanation</button>}
+          </section>
+        )}
+
+        {stage === "transfer" && (
+          <section className="stage" aria-busy={loading}>
+            <h3>8. Transfer to a changed context</h3>
+            <p>{pack.transfer.question}</p>
+            <fieldset>
+              <legend>answer</legend>
+              {pack.transfer.choices.map((choice) => (
+                <label className="choice" key={choice.id}>
+                  <input
+                    type="radio"
+                    name="transfer"
+                    checked={transfer === choice.id}
+                    onChange={() => setTransfer(choice.id)}
+                  />
+                  {choice.label}
+                </label>
+              ))}
+            </fieldset>
+            <label>
+              Why?
+              <textarea
+                value={transferWhy}
+                onChange={(event) => setTransferWhy(event.target.value)}
+                placeholder="State the causal relationship."
+              />
+            </label>
+            {attempts > 0 && <p className="error">The answer alone is not enough. Use this pack&apos;s causal relation.</p>}
+            {error && <p role="alert" className="error">ERROR: {error}</p>}
+            <button
+              disabled={loading || !transfer || transferWhy.length < 12}
+              onClick={async () => {
+                const result = await verify("transfer", transferWhy, transfer);
+                if (!result) return;
+                setTransferVerification(result.verification);
+                if (result.verification.success) advance("report");
+                else setAttempts((count) => count + 1);
+              }}
+            >
+              {loading ? "Checking transfer…" : "Verify transfer"}
+            </button>
+          </section>
+        )}
+
+        {stage === "report" && (
+          <section className="stage">
+            <h3>Method repaired. Transfer verified.</h3>
+            <table>
+              <tbody>
+                <tr><th>pack</th><td>{pack.title}</td></tr>
+                <tr><th>initial answer</th><td>{pack.choices.find((choice) => choice.id === answer)?.label} ({correct ? "correct" : "incorrect"})</td></tr>
+                <tr><th>initial method</th><td>{analysis?.summary}</td></tr>
+                <tr><th>evidence</th><td>{analysis?.edges[0]?.evidence || "no fault edge"}</td></tr>
+                <tr><th>intervention</th><td>prediction + deterministic simulation</td></tr>
+                <tr><th>transfer</th><td>{transferVerification?.success ? "answer and method verified" : "incomplete"}</td></tr>
+                <tr><th>inference mode</th><td>cached analysis, live validation</td></tr>
+                <tr><th>session id</th><td>local-{pack.id}-v1</td></tr>
+              </tbody>
+            </table>
+            <p><Link href={`/report/local-${pack.id}-v1`}>Open report view</Link></p>
+          </section>
+        )}
+      </main>
+      <SiteFooter />
+    </>
+  );
 }
-function GraphText({ pack, edges }) { return <details><summary>Graph text alternative</summary><ul>{edges.length ? edges.map((e, i) => <li key={i}>{pack.concepts.find(c => c.id === e.source)?.label} — {e.type.replaceAll("_", " ")} → {pack.concepts.find(c => c.id === e.target)?.label}. Evidence: “{e.evidence}”</li>) : <li>No validated learner relation was extracted.</li>}</ul></details>; }
-function ReasoningGraph({ pack, edges, before = [], missing = false, reduced }) {
-    const pos = (id) => pack.concepts.find(c => c.id === id) ?? { x: 0, y: 0, label: id };
-    const key = (e) => `${e.source}:${e.target}:${e.type}`;
-    const prior = new Set(before.map(key));
-    const removed = before.filter(e => !edges.some(x => key(x) === key(e)));
-    const line = (e, className, id) => { const a = pos(e.source), b = pos(e.target); return <line key={id} x1={(a.x || 0) * 7 + 35} y1={(a.y || 0) * 3} x2={(b.x || 0) * 7 + 35} y2={(b.y || 0) * 3} className={className}/>; };
-    return <div className="graph" role="img" aria-label="Learner-extracted reasoning graph"><svg viewBox="0 0 700 300" preserveAspectRatio="xMidYMid meet">{removed.map((e, i) => line(e, "edge fault removed", `old-${i}`))}{edges.map((e, i) => line(e, `edge ${pack.forbidden.some(f => key(f) === key(e)) ? "fault" : prior.has(key(e)) ? "" : "repaired"}`, String(i)))}{missing && pack.required.map((e, i) => line({ source: e.source, target: e.target, type: e.type, evidence: "" }, "edge missing", `missing-${i}`))}</svg>{pack.concepts.map((c, i) => <motion.div initial={reduced ? false : { opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .16, delay: i * .025 }} className="node" style={{ left: `${c.x ?? 7}%`, top: `${c.y ?? 14}%` }} key={c.id}>{c.label}</motion.div>)}</div>;
+
+function GraphText({ pack, edges }) {
+  return (
+    <details>
+      <summary>graph text alternative</summary>
+      <ul>
+        {edges.length ? edges.map((edge, index) => (
+          <li key={index}>
+            {pack.concepts.find((concept) => concept.id === edge.source)?.label}
+            {" -- "}{edge.type.replaceAll("_", " ")}{" -> "}
+            {pack.concepts.find((concept) => concept.id === edge.target)?.label}.
+            evidence: &quot;{edge.evidence}&quot;
+          </li>
+        )) : <li>no validated learner relation was extracted</li>}
+      </ul>
+    </details>
+  );
 }
-function Lab({ pack, ran, run }) { const vacuum = freeFallTime(20), forces = collisionForces(), shot = projectileAt(.8); return <div className="lab-grid"><div className="sim"><div className={`sim-stage ${ran ? "running" : ""}`}>{pack.id === "vacuum-drop" ? <><i className="ball a"/><i className="ball b"/><span className="floor"/></> : pack.id === "collision-forces" ? <><b className="vehicle truck">TRUCK</b><b className="vehicle car">CAR</b><span className="force left">← {Math.abs(forces.truck)} N</span><span className="force right">{forces.car} N →</span></> : <><span className="trajectory">⌒</span><i className="ball shot"/></>}</div><button className="button" onClick={run}>{ran ? "Run again" : "Run simulation"}</button></div><aside className="readout"><p className="kicker">Measured model</p>{pack.id === "vacuum-drop" ? <><strong>{vacuum.toFixed(2)} s</strong><span>20 m / g = 9.81 m/s²</span><span>Both landing times agree</span></> : pack.id === "collision-forces" ? <><strong>±12,000 N</strong><span>Equal magnitude</span><span>Opposite direction</span></> : <><strong>aₓ = {shot.ax} m/s²</strong><span>aᵧ = {shot.ay} m/s²</span><span>x(0.8 s) = {shot.x.toFixed(1)} m</span></>}</aside></div>; }
+
+function ReasoningDump({ pack, edges, before = [], missing = false }) {
+  const edgeKey = (edge) => `${edge.source}:${edge.target}:${edge.type}`;
+  const current = new Set(edges.map(edgeKey));
+  const previous = new Set(before.map(edgeKey));
+  const removed = before.filter((edge) => !current.has(edgeKey(edge)));
+
+  const lines = [
+    "reasoning_graph {",
+    ...pack.concepts.map((concept) => `  node ${concept.id} = "${concept.label}"`),
+    ...removed.map((edge) => `  - ${edge.source} --${edge.type}--> ${edge.target}`),
+    ...edges.map((edge) => {
+      const invalid = pack.forbidden.some((item) => edgeKey(item) === edgeKey(edge));
+      const prefix = invalid ? "!" : previous.has(edgeKey(edge)) ? " " : "+";
+      return `  ${prefix} ${edge.source} --${edge.type}--> ${edge.target}`;
+    }),
+    ...(missing ? pack.required.map((edge) => `  ? ${edge.source} --${edge.type}--> ${edge.target}`) : []),
+    "}",
+  ];
+
+  return <pre className="debug-output">{lines.join("\n")}</pre>;
+}
+
+function Lab({ pack, ran, run }) {
+  const vacuum = freeFallTime(20);
+  const forces = collisionForces();
+  const shot = projectileAt(.8);
+
+  const diagram = pack.id === "vacuum-drop"
+    ? `  o       O
+  |       |
+  v       v
+--------------
+floor / h=20m`
+    : pack.id === "collision-forces"
+      ? `[ TRUCK ] ---->  <---- [ CAR ]
+            contact`
+      : `ball ---->
+          .
+             .
+                v gravity`;
+
+  const output = pack.id === "vacuum-drop"
+    ? `time_a=${vacuum.toFixed(2)}s
+time_b=${vacuum.toFixed(2)}s
+g=9.81m/s^2`
+    : pack.id === "collision-forces"
+      ? `truck_force=${forces.truck}N
+car_force=${forces.car}N
+magnitude=equal`
+      : `ax=${shot.ax}m/s^2
+ay=${shot.ay}m/s^2
+x_at_0.8s=${shot.x.toFixed(1)}m`;
+
+  return (
+    <div>
+      <pre className="ascii-diagram">{diagram}</pre>
+      <button onClick={run}>{ran ? "Run again" : "Run simulation"}</button>
+      <pre>{ran ? output : "simulation_status=not_run"}</pre>
+    </div>
+  );
+}

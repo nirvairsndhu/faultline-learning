@@ -1,9 +1,10 @@
 export default function SiteFooter() {
   return (
-    <footer className="site-footer">
-      <span className="footer-logo">FAULTLINE</span>
-      <span>Submission for hackathon of __________</span>
-      <span>demo build © 2026</span>
+    <footer>
+      <hr />
+      <p>FAULTLINE</p>
+      <p>Submission for hackathon of __________</p>
+      <p><small>demo build / 2026</small></p>
     </footer>
   );
 }
