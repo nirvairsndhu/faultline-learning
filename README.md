@@ -1,48 +1,51 @@
 # Faultline
 
-**A scientific reasoning instrument for making physics causal thinking inspectable.**
+Faultline helps learners inspect, test, and repair the reasoning behind physics answers.
 
-## Release status
+## Important links
 
-Repository verification is complete on `main`: 61 tests pass, all 9 Chromium/WebKit E2E tests pass, and the production dependency audit reports 0 vulnerabilities. A public deployment URL and final video are not yet available; deployment and video recording are the remaining external submission tasks.
+- Live demo — public deployment pending
+- Demo video — final public URL pending
+- [Evaluation page](https://github.com/nirvairsndhu/faultline-learning/blob/main/docs/EVALUATION.md)
+- [Source repository](https://github.com/nirvairsndhu/faultline-learning)
 
-Without a Featherless key, the public build must disclose **Cached analysis, live validation**. It must not be described as live-model performance.
+## What it does
 
-Faultline separates selecting a correct answer from using a valid method. It maps learner language to authored concepts, identifies a supported faulty relation with literal evidence, requires a prediction, runs a local deterministic simulation, verifies teach-back, and checks transfer.
+A learner chooses an answer and explains the reasoning behind it. Faultline maps the claimed relationship, asks the learner to predict an outcome, runs a targeted simulation to test that relationship, and guides a revision. A transfer question then checks whether the repaired reasoning holds in a changed context.
 
-## Scope
+## Why it matters
 
-Three authored packs: Vacuum Drop, Collision Forces, and Projectile Motion. It is not a chatbot, authentication system, arbitrary-subject tutor, upload tool, or classroom platform.
+A correct answer can still hide incorrect reasoning. Faultline separates the answer from the method and makes the repair process visible.
 
-## Gold path
+## Scenarios
 
-Choose scenario → answer → explain → inspect graph and evidence → predict → run simulation → teach back → view repair → transfer → anonymous local report.
+- **Vacuum Drop** — Compare how objects fall when air resistance is removed.
+- **Collision Forces** — Reason about how interacting objects exert forces on each other.
+- **Projectile Motion** — Separate horizontal and vertical motion in a launch.
 
-## Architecture
+## How it works
 
-`Content packs → bounded analysis → deterministic graph/physics validation → UI`. AI interprets language only; deterministic code owns physics truth, relations, evidence checks, simulation values, repair, and transfer.
-
-## Setup
-
-```bash
-npm ci
-npm run dev
+```text
+Answer → Explain → Map → Predict → Simulate → Repair → Transfer → Report
 ```
 
-Run `npm run lint`, `npm run typecheck`, `npm run test`, `npm run build`, `npm run test:e2e`, and `npm run evaluate`.
+Language extraction interprets the learner’s explanation. Deterministic code owns physics validation, simulations, evidence checks, repair, and transfer.
 
-Copy `.env.example` to configure Featherless. Without a key, Faultline visibly uses **Cached analysis, live validation**; simulations and validators remain local. The current evaluation is fixture mode with 30 authored cases (10 per pack) and honestly marks live-model metrics as skipped. Generated production screenshots are in `public/screenshots/`.
-
-## Visual evidence
+## Screenshots
 
 ![Scenario selection](public/screenshots/scenario-selection.png)
 
-![Evidence-linked hidden misconception](public/screenshots/hidden-misconception.png)
+![Faulty reasoning map](public/screenshots/hidden-misconception.png)
 
-![Vacuum simulation observation](public/screenshots/vacuum-observation.png)
+![Simulation result](public/screenshots/featured-simulation.png)
 
-![Verified repair](public/screenshots/successful-graph-repair.png)
+![Verified repair](public/screenshots/featured-transfer-success.png)
 
-## Privacy, limits, and attribution
+## Run locally
 
-See `docs/PRIVACY.md`, `docs/LIMITATIONS.md`, `docs/EVALUATION.md`, and `docs/IMPLEMENTATION.md`. Physics citations are attached to each pack (OpenStax University Physics Vol. 1). Code is MIT; authored content is CC BY 4.0.
+```bash
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
